@@ -32,8 +32,8 @@ function updateTexts() {
     translations[currentLanguage].placeholder;
   document.getElementById("check-btn").textContent =
     translations[currentLanguage].checkButton;
-  document.getElementById("generate-btn").textContent =
-    translations[currentLanguage].generateButton;
+  document.getElementById("fix-btn").textContent =
+    translations[currentLanguage].fixButton;
   document.getElementById("info").textContent =
     translations[currentLanguage].info;
   document.getElementById("result").textContent = "...";
@@ -75,14 +75,14 @@ function checkPalindrome() {
       text
     );
     result.className = "is-palindrome";
-    document.getElementById("generate-btn").disabled = true;
+    document.getElementById("fix-btn").disabled = true;
   } else {
     result.textContent = translations[currentLanguage].notPalindrome.replace(
       "${text}",
       text
     );
     result.className = "not-palindrome";
-    document.getElementById("generate-btn").disabled = false;
+    document.getElementById("fix-btn").disabled = false;
   }
 }
 
@@ -91,10 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTexts();
   setTheme(currentTheme);
   const textInput = document.getElementById("text-input");
-  const generateBtn = document.getElementById("generate-btn");
+  const fixBtn = document.getElementById("fix-btn");
 
   textInput.addEventListener("input", () => {
-    generateBtn.disabled = true;
+    fixBtn.disabled = true;
   });
 
   textInput.addEventListener("keydown", (event) => {
@@ -128,7 +128,7 @@ const translations = {
     title: "Palindrome Checker",
     placeholder: "Enter a text",
     checkButton: "Check",
-    generateButton: "Fix",
+    fixButton: "Fix",
     emptyInput: "Please input a value",
     isPalindrome: "${text} is a palindrome!",
     notPalindrome: "${text} is not a palindrome.",
@@ -138,50 +138,50 @@ const translations = {
     title: "Verificador de Palíndromos",
     placeholder: "Ingresa un texto",
     checkButton: "Verificar",
-    generateButton: "Corregir",
+    fixButton: "Corregir",
     emptyInput: "Por favor ingresa un valor",
-    isPalindrome: '"${text}" es un palíndromo!',
-    notPalindrome: '"${text}" no es un palíndromo.',
+    isPalindrome: '${text} es un palíndromo!',
+    notPalindrome: '${text} no es un palíndromo.',
     info: "💡 Un palíndromo es una palabra o frase que se lee igual de izquierda a derecha que de derecha a izquierda, ignorando la puntuación, mayúsculas y espacios.",
   },
   fr: {
     title: "Vérificateur de Palindrome",
     placeholder: "Entrez un texte",
     checkButton: "Vérifier",
-    generateButton: "Corriger",
+    fixButton: "Corriger",
     emptyInput: "Veuillez saisir une valeur",
-    isPalindrome: '"${text}" est un palindrome !',
-    notPalindrome: '"${text}" n\'est pas un palindrome.',
+    isPalindrome: '${text} est un palindrome !',
+    notPalindrome: '${text} n\'est pas un palindrome.',
     info: "💡 Un palindrome est une phrase ou un mot qui se lit de la même manière de gauche à droite que de droite à gauche, en ignorant la ponctuation, la casse et les espaces.",
   },
   de: {
     title: "Palindrom-Prüfer",
     placeholder: "Geben Sie einen Text ein",
     checkButton: "Überprüfen",
-    generateButton: "Korrigieren",
+    fixButton: "Korrigieren",
     emptyInput: "Bitte geben Sie einen Wert ein",
-    isPalindrome: '"${text}" ist ein Palindrom!',
-    notPalindrome: '"${text}" ist kein Palindrom.',
+    isPalindrome: '${text} ist ein Palindrom!',
+    notPalindrome: '${text} ist kein Palindrom.',
     info: "💡 Ein Palindrom ist eine Zeichenkette oder ein Wort, das von links nach rechts wie von rechts nach links gelesen wird, ohne die Satzzeichen, die Groß- und Kleinschreibung sowie die Leerzeichen zu berücksichtigen.",
   },
   it: {
     title: "Verificatore di Palindromi",
     placeholder: "Inserisci un testo",
     checkButton: "Verifica",
-    generateButton: "Correggere",
+    fixButton: "Correggere",
     emptyInput: "Per favore inserisci un valore",
-    isPalindrome: '"${text}" è un palindromo!',
-    notPalindrome: '"${text}" non è un palindromo.',
+    isPalindrome: '${text} è un palindromo!',
+    notPalindrome: '${text} non è un palindromo.',
     info: "💡 Un palindromo è una stringa o un parola che viene letta da sinistra a destra come da destra a sinistra, ignorando la punteggiatura, la maiuscola e lo spazio.",
   },
   ja: {
     title: "回文チェッカー",
     placeholder: "テキストを入力してください",
     checkButton: "確認",
-    generateButton: "修正",
+    fixButton: "修正",
     emptyInput: "値を入力してください",
-    isPalindrome: '"${text}"は回文です！',
-    notPalindrome: '"${text}"は回文ではありません。',
+    isPalindrome: '${text}は回文です！',
+    notPalindrome: '${text}は回文ではありません。',
     info: "💡 回文は、左から右に読んでも右から左に読んでも同じになる単語や文です。",
   },
 };
