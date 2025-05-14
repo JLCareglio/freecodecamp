@@ -1,3 +1,64 @@
+// START freecodecamp exercises
+
+function convertToRoman(num) {
+  const romanNumerals = [
+    { value: 1000, symbol: "M" },
+    { value: 900, symbol: "CM" },
+    { value: 500, symbol: "D" },
+    { value: 400, symbol: "CD" },
+    { value: 100, symbol: "C" },
+    { value: 90, symbol: "XC" },
+    { value: 50, symbol: "L" },
+    { value: 40, symbol: "XL" },
+    { value: 10, symbol: "X" },
+    { value: 9, symbol: "IX" },
+    { value: 5, symbol: "V" },
+    { value: 4, symbol: "IV" },
+    { value: 1, symbol: "I" },
+  ];
+
+  let result = "";
+  for (const numeral of romanNumerals) {
+    while (num >= numeral.value) {
+      result += numeral.symbol;
+      num -= numeral.value;
+    }
+  }
+  return result;
+}
+
+function validateNumber(number) {
+  if (!number) return translations[currentLanguage].emptyInputError;
+  const num = parseInt(number);
+  if (num < 1) return translations[currentLanguage].minNumberError;
+  if (num > 3999) return translations[currentLanguage].maxNumberError;
+  return null;
+}
+
+function convertNumber() {
+  const numberInput = document.getElementById("number");
+  const outputElement = document.getElementById("output");
+  const number = numberInput.value;
+
+  outputElement.style.display = "block";
+  outputElement.classList.remove("error", "success");
+
+  const errorMessage = validateNumber(number);
+
+  if (errorMessage) {
+    outputElement.textContent = errorMessage;
+    outputElement.classList.add("error");
+    return;
+  }
+
+  const num = parseInt(number);
+  const romanNumeral = convertToRoman(num);
+  outputElement.textContent = romanNumeral;
+  outputElement.classList.add("success");
+}
+
+// END freecodecamp exercises
+
 let currentLanguage = "en";
 let currentTheme = localStorage.getItem("theme") || "dark";
 
@@ -39,70 +100,6 @@ function updateTexts() {
 function changeLanguage(lang) {
   currentLanguage = lang;
   updateTexts();
-}
-
-function convertToRoman(num) {
-  const romanNumerals = [
-    { value: 1000, symbol: "M" },
-    { value: 900, symbol: "CM" },
-    { value: 500, symbol: "D" },
-    { value: 400, symbol: "CD" },
-    { value: 100, symbol: "C" },
-    { value: 90, symbol: "XC" },
-    { value: 50, symbol: "L" },
-    { value: 40, symbol: "XL" },
-    { value: 10, symbol: "X" },
-    { value: 9, symbol: "IX" },
-    { value: 5, symbol: "V" },
-    { value: 4, symbol: "IV" },
-    { value: 1, symbol: "I" },
-  ];
-
-  let result = "";
-  for (let i = 0; i < romanNumerals.length; i++) {
-    while (num >= romanNumerals[i].value) {
-      result += romanNumerals[i].symbol;
-      num -= romanNumerals[i].value;
-    }
-  }
-  return result;
-}
-
-function convertNumber() {
-  const number = document.getElementById("number").value;
-  const output = document.getElementById("output");
-
-  output.style.display = "block";
-
-  if (!number) {
-    output.textContent = translations[currentLanguage].emptyInputError;
-    output.className = "error";
-    return;
-  }
-
-  const num = parseInt(number);
-
-  if (isNaN(num)) {
-    output.textContent = translations[currentLanguage].emptyInputError;
-    output.className = "error";
-    return;
-  }
-
-  if (num < 1) {
-    output.textContent = translations[currentLanguage].minNumberError;
-    output.className = "error";
-    return;
-  }
-
-  if (num > 3999) {
-    output.textContent = translations[currentLanguage].maxNumberError;
-    output.className = "error";
-    return;
-  }
-
-  const romanNumeral = convertToRoman(num);
-  output.textContent = romanNumeral;
-  output.className = "success";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
