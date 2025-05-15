@@ -235,6 +235,36 @@ input[type="number"]:focus {
   font-weight: 500;
 }
 
+.price-input {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.2rem;
+  width: 120px;
+  transition: border-color 0.3s;
+}
+
+.price-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 @media (max-width: 450px) {
   nav {
     padding: 0.5rem 1rem;

@@ -17,48 +17,49 @@ const cashInput = document.getElementById("cash");
 const purchaseBtn = document.getElementById("purchase-btn");
 const changeDueDiv = document.getElementById("change-due");
 
+const CENT_MULTIPLIER = 100;
+const CURRENCY_VALUES = {
+  "ONE HUNDRED": 100 * CENT_MULTIPLIER,
+  TWENTY: 20 * CENT_MULTIPLIER,
+  TEN: 10 * CENT_MULTIPLIER,
+  FIVE: 5 * CENT_MULTIPLIER,
+  ONE: 1 * CENT_MULTIPLIER,
+  QUARTER: 0.25 * CENT_MULTIPLIER,
+  DIME: 0.1 * CENT_MULTIPLIER,
+  NICKEL: 0.05 * CENT_MULTIPLIER,
+  PENNY: 0.01 * CENT_MULTIPLIER,
+};
+
 function checkCashRegister(price, cash, cid) {
-  const changeDue = Math.round((cash - price) * 100);
+  const changeDue = Math.round((cash - price) * CENT_MULTIPLIER);
   let totalCID = 0;
 
-  for (let i = 0; i < cid.length; i++) totalCID += Math.round(cid[i][1] * 100);
-
-  const currencyValues = {
-    "ONE HUNDRED": 10000,
-    TWENTY: 2000,
-    TEN: 1000,
-    FIVE: 500,
-    ONE: 100,
-    QUARTER: 25,
-    DIME: 10,
-    NICKEL: 5,
-    PENNY: 1,
-  };
+  for (let i = 0; i < cid.length; i++)
+    totalCID += Math.round(cid[i][1] * CENT_MULTIPLIER);
 
   if (changeDue === totalCID) return { status: "CLOSED", change: [...cid] };
   if (changeDue > totalCID) return { status: "INSUFFICIENT_FUNDS", change: [] };
 
   const sortedCID = [...cid].reverse();
-
   let changeArray = [];
   let remainingChange = changeDue;
 
   for (let i = 0; i < sortedCID.length; i++) {
     const coinName = sortedCID[i][0];
-    const coinValue = currencyValues[coinName];
-    const availableCoins = Math.round(sortedCID[i][1] * 100);
+    const coinValue = CURRENCY_VALUES[coinName];
+    const availableValue = Math.round(sortedCID[i][1] * CENT_MULTIPLIER);
 
-    let coinsToUse = 0;
+    const maxCoinsToUse = Math.min(
+      Math.floor(remainingChange / coinValue),
+      Math.floor(availableValue / coinValue)
+    );
 
-    while (
-      remainingChange >= coinValue &&
-      coinsToUse + coinValue <= availableCoins
-    ) {
-      remainingChange -= coinValue;
-      coinsToUse += coinValue;
+    const valueDispensedForThisCoin = maxCoinsToUse * coinValue;
+
+    if (valueDispensedForThisCoin > 0) {
+      remainingChange -= valueDispensedForThisCoin;
+      changeArray.push([coinName, valueDispensedForThisCoin / CENT_MULTIPLIER]);
     }
-
-    if (coinsToUse > 0) changeArray.push([coinName, coinsToUse / 100]);
   }
 
   if (remainingChange > 0) return { status: "INSUFFICIENT_FUNDS", change: [] };
@@ -86,16 +87,16 @@ purchaseBtn.addEventListener("click", () => {
   statusElement.textContent = `Status: ${result.status}`;
   changeDueDiv.appendChild(statusElement);
 
-  if (result.status === "INSUFFICIENT_FUNDS") {
-  } else if (result.status === "CLOSED" || result.status === "OPEN") {
-    result.change.forEach((item) => {
-      const formattedValue = item[1].toFixed(2);
-      const displayValue = formattedValue.replace(/\.?0+$/, "");
-
-      const itemElement = document.createElement("p");
-      itemElement.textContent = `${item[0]}: $${displayValue}`;
-      changeDueDiv.appendChild(itemElement);
-    });
+  if (result.status === "CLOSED" || result.status === "OPEN") {
+    result.change
+      .filter((item) => item[1] > 0)
+      .forEach((item) => {
+        const formattedValue = item[1].toFixed(2);
+        const displayValue = formattedValue.replace(/\.?0+$/, "");
+        const itemElement = document.createElement("p");
+        itemElement.textContent = `${item[0]}: $${displayValue}`;
+        changeDueDiv.appendChild(itemElement);
+      });
   }
 });
 
@@ -124,7 +125,7 @@ function displayRegisterContent() {
   const currentPriceElement = document.getElementById("current-price");
   const drawerContentElement = document.getElementById("drawer-content");
 
-  currentPriceElement.textContent = `$${price.toFixed(2)}`;
+  currentPriceElement.value = price.toFixed(2);
 
   drawerContentElement.innerHTML = "";
   cid.forEach(([denomination, amount]) => {
@@ -141,6 +142,17 @@ function displayRegisterContent() {
 document.addEventListener("DOMContentLoaded", () => {
   setTheme(currentTheme);
   displayRegisterContent();
+
+  const priceInput = document.getElementById("current-price");
+  priceInput.addEventListener("change", () => {
+    const newPrice = parseFloat(priceInput.value);
+    if (!isNaN(newPrice) && newPrice > 0) price = newPrice;
+    else {
+      alert("Please enter a valid price greater than 0");
+      priceInput.value = price.toFixed(2);
+    }
+  });
+
   cashInput.addEventListener("keydown", (event) => {
     if (
       event.key === "Enter" ||
