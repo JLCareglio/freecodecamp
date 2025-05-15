@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Convert numbers to Roman numerals with this easy-to-use converter tool. Free online Roman numeral converter with support for multiple languages."
+    />
+    <meta
+      name="keywords"
+      content="roman numerals, number converter, roman numeral converter, roman numbers, numeric conversion, roman numerals calculator"
+    />
+    <meta name="author" content="Jesús Lautaro Careglio Albornoz" />
+    <meta name="robots" content="index, follow" />
+    <title>Roman Numeral Converter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Convert numbers to Roman numerals with this easy-to-use converter tool. Free online Roman numeral converter with support for multiple languages.">
-  <meta name="keywords"
-    content="roman numerals, number converter, roman numeral converter, roman numbers, numeric conversion, roman numerals calculator">
-  <meta name="author" content="Jesús Lautaro Careglio Albornoz">
-  <meta name="robots" content="index, follow">
-  <title>Roman Numeral Converter</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-
-<body>
-  <nav class="language-nav">
-    <img src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp Logo" class="logo">
-    <div class="nav-controls">
-      <select id="language-selector" onchange="changeLanguage(this.value)">
-        <option value="de">Deutsch [🇩🇪]</option>
-        <option value="en" selected>English [🇺🇸]</option>
-        <option value="es">Español [🇦🇷]</option>
-        <option value="fr">Français [🇫🇷]</option>
-        <option value="it">Italiano [🇮🇹]</option>
-        <option value="ja">日本語 [🇯🇵]</option>
-      </select>
-      <button id="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌙</span>
-      </button>
-    </div>
-  </nav>
-  <main>
-    <div class="container">
-      <h1 id="title">Roman Numeral Converter</h1>
-      <div class="input-section">
-        <input type="number" id="number" placeholder="Enter a Number">
-        <button id="convert-btn" onclick="convertNumber()">Convert</button>
+  <body>
+    <nav class="language-nav">
+      <img
+        src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+        alt="freeCodeCamp Logo"
+        class="logo"
+      />
+      <div class="nav-controls">
+        <select id="language-selector" onchange="changeLanguage(this.value)">
+          <option value="de">Deutsch [🇩🇪]</option>
+          <option value="en" selected>English [🇺🇸]</option>
+          <option value="es">Español [🇦🇷]</option>
+          <option value="fr">Français [🇫🇷]</option>
+          <option value="it">Italiano [🇮🇹]</option>
+          <option value="ja">日本語 [🇯🇵]</option>
+        </select>
+        <button id="theme-toggle" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span>
+        </button>
       </div>
-      <div id="output"></div>
-    </div>
-  </main>
-  <footer class="footer">
-    <p>Dev: Jesús Lautaro Careglio Albornoz</p>
-  </footer>
-  <script src="./script.js"></script>
-</body>
-
+    </nav>
+    <main>
+      <div class="container">
+        <h1 id="title">Roman Numeral Converter</h1>
+        <div class="input-section">
+          <input type="number" id="number" placeholder="Enter a Number" />
+          <button id="convert-btn" onclick="convertNumber()">Convert</button>
+        </div>
+        <div id="output"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>Dev: Jesús Lautaro Careglio Albornoz</p>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
 </html>
