@@ -13,14 +13,15 @@ const register3D = {
 
   CONTAINER_WIDTH: 260,
   CONTAINER_HEIGHT: 200,
-  BODY_COLOR: 0xbdc3c7,
-  ACCENT_COLOR: 0x34495e,
-  BUTTON_COLOR: 0xe67e22,
-  DISPLAY_SCREEN_COLOR: 0x2c3e50,
-  KEY_TOP_COLOR: 0xf1c40f,
-  ROTATION_SMOOTHING: 0.1,
+  BODY_COLOR: 0x8b5cf6,
+  ACCENT_COLOR: 0x6366f1,
+  BUTTON_COLOR: 0x4f46e5,
+  DISPLAY_SCREEN_COLOR: 0x1a1a1a,
+  KEY_TOP_COLOR: 0xeab308,
+  ROTATION_SMOOTHING: 0.04,
   FLOAT_SPEED: 0.001,
   FLOAT_AMOUNT: 0.05,
+  DISPLAY_PRICE: 1.87,
 
   init: function () {
     this.setupScene();
@@ -98,7 +99,6 @@ const register3D = {
       metalness: 0.1,
     });
 
-    // Model geometry creation (same as before, using constants)
     const baseWidth = 4.5;
     const baseHeight = 0.8;
     const baseDepth = 3;
@@ -154,6 +154,32 @@ const register3D = {
     );
     displayScreen.position.z = displayDepth / 2 + 0.06;
     displayHousing.add(displayScreen);
+
+    const priceText = `$${this.DISPLAY_PRICE.toFixed(2)}`;
+
+    const priceCanvas = document.createElement("canvas");
+    const context = priceCanvas.getContext("2d");
+    priceCanvas.width = 256;
+    priceCanvas.height = 128;
+    context.fillStyle = "#22c55e";
+    context.font = "bold 110px Arial";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText(priceText, 128, 64);
+
+    const priceTexture = new THREE.CanvasTexture(priceCanvas);
+    const priceMaterial = new THREE.MeshBasicMaterial({
+      map: priceTexture,
+      transparent: true,
+    });
+
+    const priceGeometry = new THREE.PlaneGeometry(
+      displayWidth * 0.7,
+      displayHeight * 0.5
+    );
+    const priceDisplay = new THREE.Mesh(priceGeometry, priceMaterial);
+    priceDisplay.position.z = 0.11;
+    displayScreen.add(priceDisplay);
 
     const keySize = 0.4;
     const keyHeight = 0.15;
@@ -219,7 +245,6 @@ const register3D = {
     drawer.add(drawerHandle);
 
     this.registerModel.scale.set(1.1, 1.1, 1.1);
-
     this.scene.add(this.registerModel);
   },
 
@@ -342,15 +367,11 @@ const register3D = {
         this.renderer.render(this.scene, this.camera);
       }
 
-      if (progress < 1) {
-        this.animationId = requestAnimationFrame(animateShrink);
-      } else {
-        if (this.container) {
-          this.container.style.display = "none";
-        }
-        if (this.machineElement) {
-          this.machineElement.style.display = "block";
-        }
+      if (progress < 1) this.animationId = requestAnimationFrame(animateShrink);
+      else {
+        if (this.container) this.container.style.display = "none";
+        if (this.machineElement) this.machineElement.style.display = "block";
+
         // Important: Cancel the main animation loop if needed, or manage its state
         // If the main animation loop should stop after shrinking, add logic here.
         // For now, assuming the main loop continues but doesn't render the hidden model/container.
@@ -384,8 +405,6 @@ const register3D = {
 
       this.renderer.render(this.scene, this.camera);
     } else if (this.animationId) {
-      // If the container is hidden and animation is running, stop it.
-      // This prevents unnecessary rendering when the 3D model is not visible.
       cancelAnimationFrame(this.animationId);
       this.animationId = null;
     }
@@ -396,14 +415,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const script = document.createElement("script");
   script.src =
     "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-  script.onload = () => {
-    register3D.init();
-  };
+  script.onload = () => register3D.init();
   document.head.appendChild(script);
-
-  // Assuming updatePriceLabel exists elsewhere if this line is needed
-  const priceInput = document.getElementById("current-price");
-  if (priceInput && typeof updatePriceLabel !== "undefined") {
-    priceInput.addEventListener("change", updatePriceLabel);
-  }
 });
