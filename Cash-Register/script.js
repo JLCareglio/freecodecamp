@@ -79,6 +79,8 @@ purchaseBtn.addEventListener("click", () => {
     return;
   }
 
+  triggerRegisterAnimation();
+
   const result = checkCashRegister(price, cashValue, cid);
 
   changeDueDiv.innerHTML = "";
@@ -101,6 +103,17 @@ purchaseBtn.addEventListener("click", () => {
 });
 
 // END freecodecamp exercises
+
+function triggerRegisterAnimation() {
+  const container = document.getElementById("register-3d-container");
+  const machineElement = document.querySelector(".machine");
+
+  if (container && machineElement && container.style.display !== "none") {
+    document
+      .getElementById("register-3d-container")
+      .dispatchEvent(new Event("click"));
+  }
+}
 
 let currentTheme = localStorage.getItem("theme") || "dark";
 
