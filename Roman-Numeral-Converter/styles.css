@@ -113,6 +113,7 @@ h1 {
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 2rem;
+  text-wrap: balance;
 }
 
 .input-section {

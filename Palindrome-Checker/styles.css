@@ -112,6 +112,7 @@ h1 {
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 2rem;
+  text-wrap: balance;
 }
 
 .input-section {
@@ -175,6 +176,7 @@ button:disabled {
   padding: 1rem;
   background-color: var(--bg-primary);
   border-radius: 4px;
+  text-wrap: pretty;
 }
 
 .is-palindrome {
