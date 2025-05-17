@@ -9,6 +9,8 @@ This repository contains all the projects I have created while completing the Fr
 - [Palindrome Checker](https://jlcareglio.github.io/freecodecamp/Palindrome-Checker/index.html)
 - [Roman Numeral Converter](https://jlcareglio.github.io/freecodecamp/Roman-Numeral-Converter/index.html)
 - [Telephone Number Validator](https://jlcareglio.github.io/freecodecamp/Telephone-Number-Validator/index.html)
+- [Cash Register](https://jlcareglio.github.io/freecodecamp/Cash-Register/index.html)
+- [RPG Creature Search App](https://jlcareglio.github.io/freecodecamp/RPG-Creature-Search-App/index.html)
 
 ## FreeCodeCamp Profile
 
