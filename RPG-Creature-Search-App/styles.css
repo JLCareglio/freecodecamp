@@ -407,6 +407,51 @@ td[id]::after {
   transition: width 0.5s ease;
 }
 
+/* Contenedor de criaturas salvajes */
+#random-creatures-container {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 30px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  display: none;
+}
+
+.random-creatures-title {
+  text-align: center;
+  text-wrap: balance;
+  color: var(--header-color);
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+#random-creatures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  gap: 10px;
+  justify-items: center;
+}
+
+#random-creatures-grid img {
+  width: 256px;
+  height: 256px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 4px solid var(--primary-color);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  image-rendering: pixelated;
+  object-fit: contain;
+}
+
+#random-creatures-grid img:hover {
+  transform: scale(1.05);
+  border-color: var(--secondary-color);
+}
+
 /* Pie de página */
 .footer {
   text-align: center;
@@ -458,43 +503,6 @@ td[id]::after {
     4px calc(100% - 4px),
     0% calc(100% - 4px)
   );
-}
-
-/* Media queries para responsividad */
-@media (max-width: 590px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  #creature-sprite {
-    width: 100%;
-    height: auto;
-  }
-
-  .container {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  #search-form {
-    gap: 10px;
-  }
-
-  button {
-    padding: 8px 12px;
-    font-size: 0.7rem;
-  }
-
-  #creature-name {
-    font-size: 1rem;
-  }
-
-  th,
-  td {
-    padding: 6px;
-    font-size: 0.6rem;
-  }
 }
 
 /* Estilos para cuando se muestra la información de la criatura */
@@ -550,4 +558,41 @@ main::before {
   pointer-events: none;
   z-index: 99;
   opacity: 0.5;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 590px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #creature-sprite {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #search-form {
+    gap: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.7rem;
+  }
+
+  #creature-name {
+    font-size: 1rem;
+  }
+
+  th,
+  td {
+    padding: 6px;
+    font-size: 0.6rem;
+  }
 }

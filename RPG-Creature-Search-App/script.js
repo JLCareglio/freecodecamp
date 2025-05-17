@@ -1,8 +1,9 @@
 const API = {
   baseUrl: "https://rpg-creature-api.freecodecamp.rocks/api/",
   search: "creature/",
-  baseImgUrl:
-    "https://raw.githubusercontent.com/JLCareglio/freecodecamp/refs/heads/main/RPG-Creature-Search-App/assets/",
+  baseImgUrl: "./assets/",
+  allCreaturesTxt:
+    "Pyrolynx,Aquoroc,Voltadon,Floraspine,Cryostag,Terradon,Emberapod,Lunaclaw,Quillquake,Mystifin,Dracilume,Thornaconda,Frostbyte,Graviboa,Zephyreon,Blazebore,Brontogale,Shadeelisk,Titanule,Faegis",
 };
 
 const creatureElements = {
@@ -27,6 +28,10 @@ const creatureElements = {
     special_defense: document.getElementById("special-defense"),
     speed: document.getElementById("speed"),
   },
+  randomCreaturesContainer: document.getElementById(
+    "random-creatures-container"
+  ),
+  randomCreaturesGrid: document.getElementById("random-creatures-grid"),
 };
 
 const searchElements = {
@@ -103,11 +108,42 @@ const handleSearch = async (event) => {
   else creatureElements.outputData.style.display = "none";
 };
 
-const randomPick = () => {
-  const randomId = Math.floor(Math.random() * 20) + 1;
-  searchElements.input.value = randomId;
-  handleSearch();
+const showRandomCreatures = () => {
+  const creatures = API.allCreaturesTxt.split(",");
+  const numCreatures = Math.floor(Math.random() * 6) + 3;
+
+  creatureElements.randomCreaturesGrid.innerHTML = "";
+
+  const selectedCreatures = [];
+  while (selectedCreatures.length < numCreatures) {
+    const randomIndex = Math.floor(Math.random() * creatures.length);
+    if (!selectedCreatures.includes(creatures[randomIndex]))
+      selectedCreatures.push(creatures[randomIndex]);
+  }
+
+  selectedCreatures.forEach((creatureName) => {
+    const index = creatures.indexOf(creatureName) + 1;
+    const img = document.createElement("img");
+    img.src = `${API.baseImgUrl}${index
+      .toString()
+      .padStart(2, "0")}-${creatureName}-256px.png`;
+    img.alt = creatureName;
+    img.setAttribute("data-id", index);
+    img.addEventListener("click", () => {
+      searchElements.input.value = index;
+      handleSearch();
+      creatureElements.randomCreaturesContainer.style.display = "none";
+      creatureElements.outputData.scrollIntoView({ behavior: "smooth" });
+    });
+    creatureElements.randomCreaturesGrid.appendChild(img);
+  });
+
+  creatureElements.randomCreaturesContainer.style.display = "block";
+  creatureElements.outputData.style.display = "none";
+  creatureElements.randomCreaturesContainer.scrollIntoView({
+    behavior: "smooth",
+  });
 };
 
 searchElements.form.addEventListener("submit", handleSearch);
-searchElements.luckyButton.addEventListener("click", randomPick);
+searchElements.luckyButton.addEventListener("click", showRandomCreatures);
