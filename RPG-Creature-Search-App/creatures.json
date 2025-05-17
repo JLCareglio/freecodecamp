@@ -8,14 +8,14 @@
       "name": "Blazing Reflex",
       "description": "Increases speed when hit by a Fire-type move."
     },
-    "stats": [
-      { "base_stat": 65, "name": "hp" },
-      { "base_stat": 80, "name": "attack" },
-      { "base_stat": 50, "name": "defense" },
-      { "base_stat": 90, "name": "special-attack" },
-      { "base_stat": 55, "name": "special-defense" },
-      { "base_stat": 100, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 65,
+      "attack": 80,
+      "defense": 50,
+      "special-attack": 90,
+      "special-defense": 55,
+      "speed": 100
+    },
     "types": [{ "name": "fire" }]
   },
   {
@@ -27,14 +27,14 @@
       "name": "Tidal Barrier",
       "description": "Reduces damage from Fire and Ice attacks by 50%."
     },
-    "stats": [
-      { "base_stat": 85, "name": "hp" },
-      { "base_stat": 90, "name": "attack" },
-      { "base_stat": 120, "name": "defense" },
-      { "base_stat": 60, "name": "special-attack" },
-      { "base_stat": 70, "name": "special-defense" },
-      { "base_stat": 40, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 85,
+      "attack": 90,
+      "defense": 120,
+      "special-attack": 60,
+      "special-defense": 70,
+      "speed": 40
+    },
     "types": [{ "name": "water" }, { "name": "rock" }]
   },
   {
@@ -46,14 +46,14 @@
       "name": "Stormcaller",
       "description": "Summons a thunderstorm, boosting Electric-type moves."
     },
-    "stats": [
-      { "base_stat": 92, "name": "hp" },
-      { "base_stat": 115, "name": "attack" },
-      { "base_stat": 75, "name": "defense" },
-      { "base_stat": 100, "name": "special-attack" },
-      { "base_stat": 80, "name": "special-defense" },
-      { "base_stat": 85, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 92,
+      "attack": 115,
+      "defense": 75,
+      "special-attack": 100,
+      "special-defense": 80,
+      "speed": 85
+    },
     "types": [{ "name": "electric" }, { "name": "dragon" }]
   },
   {
@@ -65,14 +65,14 @@
       "name": "Toxic Bloom",
       "description": "Releases a poison cloud when hit by a contact move."
     },
-    "stats": [
-      { "base_stat": 78, "name": "hp" },
-      { "base_stat": 55, "name": "attack" },
-      { "base_stat": 80, "name": "defense" },
-      { "base_stat": 85, "name": "special-attack" },
-      { "base_stat": 90, "name": "special-defense" },
-      { "base_stat": 50, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 78,
+      "attack": 55,
+      "defense": 80,
+      "special-attack": 85,
+      "special-defense": 90,
+      "speed": 50
+    },
     "types": [{ "name": "grass" }, { "name": "poison" }]
   },
   {
@@ -84,14 +84,14 @@
       "name": "Frozen Veil",
       "description": "Reduces damage from Fire-type moves by 30%."
     },
-    "stats": [
-      { "base_stat": 85, "name": "hp" },
-      { "base_stat": 75, "name": "attack" },
-      { "base_stat": 65, "name": "defense" },
-      { "base_stat": 110, "name": "special-attack" },
-      { "base_stat": 105, "name": "special-defense" },
-      { "base_stat": 95, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 85,
+      "attack": 75,
+      "defense": 65,
+      "special-attack": 110,
+      "special-defense": 105,
+      "speed": 95
+    },
     "types": [{ "name": "ice" }, { "name": "fairy" }]
   },
   {
@@ -103,14 +103,14 @@
       "name": "Stone Glide",
       "description": "Immune to Rock-type attacks."
     },
-    "stats": [
-      { "base_stat": 98, "name": "hp" },
-      { "base_stat": 120, "name": "attack" },
-      { "base_stat": 85, "name": "defense" },
-      { "base_stat": 60, "name": "special-attack" },
-      { "base_stat": 80, "name": "special-defense" },
-      { "base_stat": 102, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 98,
+      "attack": 120,
+      "defense": 85,
+      "special-attack": 60,
+      "special-defense": 80,
+      "speed": 102
+    },
     "types": [{ "name": "ground" }, { "name": "flying" }]
   },
   {
@@ -122,14 +122,14 @@
       "name": "Scorch Shell",
       "description": "Contact attackers take burn damage."
     },
-    "stats": [
-      { "base_stat": 55, "name": "hp" },
-      { "base_stat": 70, "name": "attack" },
-      { "base_stat": 50, "name": "defense" },
-      { "base_stat": 100, "name": "special-attack" },
-      { "base_stat": 65, "name": "special-defense" },
-      { "base_stat": 120, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 55,
+      "attack": 70,
+      "defense": 50,
+      "special-attack": 100,
+      "special-defense": 65,
+      "speed": 120
+    },
     "types": [{ "name": "fire" }, { "name": "bug" }]
   },
   {
@@ -141,14 +141,14 @@
       "name": "Moonlit Fury",
       "description": "Becomes stronger at night."
     },
-    "stats": [
-      { "base_stat": 75, "name": "hp" },
-      { "base_stat": 85, "name": "attack" },
-      { "base_stat": 60, "name": "defense" },
-      { "base_stat": 95, "name": "special-attack" },
-      { "base_stat": 100, "name": "special-defense" },
-      { "base_stat": 88, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 75,
+      "attack": 85,
+      "defense": 60,
+      "special-attack": 95,
+      "special-defense": 100,
+      "speed": 88
+    },
     "types": [{ "name": "dark" }, { "name": "psychic" }]
   },
   {
@@ -160,14 +160,14 @@
       "name": "Armor Spikes",
       "description": "Deals damage when hit by contact moves."
     },
-    "stats": [
-      { "base_stat": 80, "name": "hp" },
-      { "base_stat": 105, "name": "attack" },
-      { "base_stat": 120, "name": "defense" },
-      { "base_stat": 50, "name": "special-attack" },
-      { "base_stat": 75, "name": "special-defense" },
-      { "base_stat": 40, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 80,
+      "attack": 105,
+      "defense": 120,
+      "special-attack": 50,
+      "special-defense": 75,
+      "speed": 40
+    },
     "types": [{ "name": "ground" }, { "name": "steel" }]
   },
   {
@@ -179,14 +179,14 @@
       "name": "Spectral Current",
       "description": "Gains evasion when in rain."
     },
-    "stats": [
-      { "base_stat": 90, "name": "hp" },
-      { "base_stat": 60, "name": "attack" },
-      { "base_stat": 75, "name": "defense" },
-      { "base_stat": 115, "name": "special-attack" },
-      { "base_stat": 100, "name": "special-defense" },
-      { "base_stat": 80, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 90,
+      "attack": 60,
+      "defense": 75,
+      "special-attack": 115,
+      "special-defense": 100,
+      "speed": 80
+    },
     "types": [{ "name": "water" }, { "name": "ghost" }]
   },
   {
@@ -198,14 +198,14 @@
       "name": "Inferno Heart",
       "description": "Boosts Fire-type moves when HP is below 50%."
     },
-    "stats": [
-      { "base_stat": 95, "name": "hp" },
-      { "base_stat": 105, "name": "attack" },
-      { "base_stat": 85, "name": "defense" },
-      { "base_stat": 120, "name": "special-attack" },
-      { "base_stat": 80, "name": "special-defense" },
-      { "base_stat": 90, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 95,
+      "attack": 105,
+      "defense": 85,
+      "special-attack": 120,
+      "special-defense": 80,
+      "speed": 90
+    },
     "types": [{ "name": "fire" }, { "name": "dragon" }]
   },
   {
@@ -217,14 +217,14 @@
       "name": "Vine Trap",
       "description": "Lowers the opponent’s Speed when hit by a physical move."
     },
-    "stats": [
-      { "base_stat": 100, "name": "hp" },
-      { "base_stat": 115, "name": "attack" },
-      { "base_stat": 90, "name": "defense" },
-      { "base_stat": 50, "name": "special-attack" },
-      { "base_stat": 80, "name": "special-defense" },
-      { "base_stat": 60, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 100,
+      "attack": 115,
+      "defense": 90,
+      "special-attack": 50,
+      "special-defense": 80,
+      "speed": 60
+    },
     "types": [{ "name": "grass" }, { "name": "dark" }]
   },
   {
@@ -236,14 +236,14 @@
       "name": "Static Freeze",
       "description": "Has a 30% chance to paralyze and freeze the opponent."
     },
-    "stats": [
-      { "base_stat": 75, "name": "hp" },
-      { "base_stat": 90, "name": "attack" },
-      { "base_stat": 70, "name": "defense" },
-      { "base_stat": 105, "name": "special-attack" },
-      { "base_stat": 85, "name": "special-defense" },
-      { "base_stat": 110, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 75,
+      "attack": 90,
+      "defense": 70,
+      "special-attack": 105,
+      "special-defense": 85,
+      "speed": 110
+    },
     "types": [{ "name": "ice" }, { "name": "electric" }]
   },
   {
@@ -255,14 +255,14 @@
       "name": "Gravity Coil",
       "description": "Halves the opponent’s Speed when it enters battle."
     },
-    "stats": [
-      { "base_stat": 110, "name": "hp" },
-      { "base_stat": 85, "name": "attack" },
-      { "base_stat": 130, "name": "defense" },
-      { "base_stat": 65, "name": "special-attack" },
-      { "base_stat": 100, "name": "special-defense" },
-      { "base_stat": 45, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 110,
+      "attack": 85,
+      "defense": 130,
+      "special-attack": 65,
+      "special-defense": 100,
+      "speed": 45
+    },
     "types": [{ "name": "rock" }, { "name": "psychic" }]
   },
   {
@@ -274,14 +274,14 @@
       "name": "Tailwind Grace",
       "description": "Doubles Speed for the first 3 turns of battle."
     },
-    "stats": [
-      { "base_stat": 70, "name": "hp" },
-      { "base_stat": 65, "name": "attack" },
-      { "base_stat": 60, "name": "defense" },
-      { "base_stat": 110, "name": "special-attack" },
-      { "base_stat": 95, "name": "special-defense" },
-      { "base_stat": 125, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 70,
+      "attack": 65,
+      "defense": 60,
+      "special-attack": 110,
+      "special-defense": 95,
+      "speed": 125
+    },
     "types": [{ "name": "flying" }, { "name": "fairy" }]
   },
   {
@@ -293,14 +293,14 @@
       "name": "Magma Charge",
       "description": "Has a 20% chance to set the battlefield on fire, dealing chip damage to non-Fire types."
     },
-    "stats": [
-      { "base_stat": 90, "name": "hp" },
-      { "base_stat": 120, "name": "attack" },
-      { "base_stat": 80, "name": "defense" },
-      { "base_stat": 75, "name": "special-attack" },
-      { "base_stat": 60, "name": "special-defense" },
-      { "base_stat": 85, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 90,
+      "attack": 120,
+      "defense": 80,
+      "special-attack": 75,
+      "special-defense": 60,
+      "speed": 85
+    },
     "types": [{ "name": "fire" }, { "name": "ground" }]
   },
   {
@@ -312,14 +312,14 @@
       "name": "Aeroquake",
       "description": "Summons strong winds that increase the power of Flying-type moves."
     },
-    "stats": [
-      { "base_stat": 115, "name": "hp" },
-      { "base_stat": 95, "name": "attack" },
-      { "base_stat": 105, "name": "defense" },
-      { "base_stat": 75, "name": "special-attack" },
-      { "base_stat": 90, "name": "special-defense" },
-      { "base_stat": 55, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 115,
+      "attack": 95,
+      "defense": 105,
+      "special-attack": 75,
+      "special-defense": 90,
+      "speed": 55
+    },
     "types": [{ "name": "flying" }, { "name": "rock" }]
   },
   {
@@ -331,14 +331,14 @@
       "name": "Toxic Mirage",
       "description": "Creates an illusion that confuses the opponent for the first two turns."
     },
-    "stats": [
-      { "base_stat": 80, "name": "hp" },
-      { "base_stat": 85, "name": "attack" },
-      { "base_stat": 70, "name": "defense" },
-      { "base_stat": 110, "name": "special-attack" },
-      { "base_stat": 100, "name": "special-defense" },
-      { "base_stat": 95, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 80,
+      "attack": 85,
+      "defense": 70,
+      "special-attack": 110,
+      "special-defense": 100,
+      "speed": 95
+    },
     "types": [{ "name": "dark" }, { "name": "poison" }]
   },
   {
@@ -350,14 +350,14 @@
       "name": "Iron Tide",
       "description": "Raises Defense in rainy weather."
     },
-    "stats": [
-      { "base_stat": 130, "name": "hp" },
-      { "base_stat": 95, "name": "attack" },
-      { "base_stat": 140, "name": "defense" },
-      { "base_stat": 60, "name": "special-attack" },
-      { "base_stat": 90, "name": "special-defense" },
-      { "base_stat": 30, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 130,
+      "attack": 95,
+      "defense": 140,
+      "special-attack": 60,
+      "special-defense": 90,
+      "speed": 30
+    },
     "types": [{ "name": "steel" }, { "name": "water" }]
   },
   {
@@ -369,14 +369,14 @@
       "name": "Enchanted Shield",
       "description": "Blocks the first super-effective attack in battle."
     },
-    "stats": [
-      { "base_stat": 85, "name": "hp" },
-      { "base_stat": 50, "name": "attack" },
-      { "base_stat": 120, "name": "defense" },
-      { "base_stat": 100, "name": "special-attack" },
-      { "base_stat": 115, "name": "special-defense" },
-      { "base_stat": 55, "name": "speed" }
-    ],
+    "stats": {
+      "hp": 85,
+      "attack": 50,
+      "defense": 120,
+      "special-attack": 100,
+      "special-defense": 115,
+      "speed": 55
+    },
     "types": [{ "name": "fairy" }, { "name": "steel" }]
   }
 ]
