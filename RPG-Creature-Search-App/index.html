@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple RPG creature search app" />
+    <meta
+      name=" keywords"
+      content="rpg, creature, search, app"
+      <meta
+      name="author"
+      content="Jesús Lautaro Careglio Albornoz"
+    />
+    <meta name="robots" content="index, follow" />
+    <title>RPG Creature Search App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-content">
+        <img
+          src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+          alt="freeCodeCamp Logo"
+          class="logo"
+          width="260"
+        />
+      </div>
+    </nav>
+    <main>
+      <h1>RPG Creature Search App</h1>
+      <div class="container">
+        <form role="search" id="search-form">
+          <label for="search-input"
+            >Search for Creature Name or ID (1-20):</label
+          >
+          <input type="text" name="creature" id="search-input" required />
+          <button id="search-button">Search</button>
+          <button id="pick-random-button">I'am feeling lucky</button>
+        </form>
+        <div class="output">
+          <div class="top-container">
+            <div class="name-and-id">
+              <figure class="creature-image">
+                <img
+                  id="creature-sprite"
+                  src=""
+                  alt="Creature Sprite"
+                  width="260"
+                  height="260"
+                />
+                <figcaption>
+                  <span id="creature-name"></span>
+                  <span id="creature-id"></span>
+                </figcaption>
+              </figure>
+              <div class="size">
+                <span id="weight"></span>
+                <span id="height"></span>
+              </div>
+            </div>
+            <div id="types"></div>
+            <div>
+              <div id="special-name"></div>
+              <div id="special-description"></div>
+            </div>
+          </div>
+          <div class="bottom-container">
+            <table>
+              <tr>
+                <th>Base</th>
+                <th>Stats</th>
+              </tr>
+              <tr>
+                <td>HP:</td>
+                <td id="hp"></td>
+              </tr>
+              <tr>
+                <td>Attack:</td>
+                <td id="attack"></td>
+              </tr>
+              <tr>
+                <td>Defense:</td>
+                <td id="defense"></td>
+              </tr>
+              <tr>
+                <td>Sp. Attack:</td>
+                <td id="special-attack"></td>
+              </tr>
+              <tr>
+                <td>Sp. Defense:</td>
+                <td id="special-defense"></td>
+              </tr>
+              <tr>
+                <td>Speed:</td>
+                <td id="speed" class="speed"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <script src="./script.js"></script>
+    </main>
+    <footer class="footer">
+      <p>Dev: Jesús Lautaro Careglio Albornoz</p>
+    </footer>
+  </body>
+</html>

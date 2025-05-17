@@ -1,0 +1,567 @@
+/* Fuente de pixel art */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --primary-color: #ff5722;
+  --secondary-color: #4caf50;
+  --text-color: #e0e0e0;
+  --border-color: #2c2c2c;
+  --header-color: #ff9800;
+  --fire-color: #ff5722;
+  --water-color: #2196f3;
+  --grass-color: #4caf50;
+  --electric-color: #ffeb3b;
+  --ice-color: #00bcd4;
+  --poison-color: #9c27b0;
+  --ground-color: #795548;
+  --flying-color: #03a9f4;
+  --psychic-color: #e91e63;
+  --bug-color: #8bc34a;
+  --rock-color: #795548;
+  --ghost-color: #673ab7;
+  --dragon-color: #3f51b5;
+  --dark-color: #424242;
+  --steel-color: #607d8b;
+  --fairy-color: #e91e63;
+}
+
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(
+      rgba(18, 18, 18, 0.9),
+      rgba(18, 18, 18, 0.9)
+    ),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="1" height="1" fill="%23333" x="0" y="0"/></svg>');
+  background-size: 20px 20px;
+}
+
+/* Barra de navegación */
+nav {
+  background-color: #000000;
+  padding: 10px 0;
+  border-bottom: 4px solid var(--primary-color);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  max-width: 200px;
+  image-rendering: pixelated;
+}
+
+/* Encabezado principal */
+h1 {
+  text-align: center;
+  text-wrap: balance;
+  color: var(--header-color);
+  margin: 20px 0;
+  text-shadow: 3px 3px 0 #000;
+  letter-spacing: 2px;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 4px;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border: 4px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Formulario de búsqueda */
+#search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+}
+
+label {
+  text-align: center;
+  text-wrap: balance;
+  font-size: 0.8rem;
+  color: var(--header-color);
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 0.8rem;
+  background-color: #000;
+  color: var(--text-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: 0;
+}
+
+button:hover {
+  background-color: #e64a19;
+}
+
+button:active {
+  top: 4px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+#pick-random-button {
+  background-color: var(--secondary-color);
+}
+
+#pick-random-button:hover {
+  background-color: #388e3c;
+}
+
+/* Contenedor de salida */
+.output {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  display: none; /* Se mostrará con JavaScript cuando haya datos */
+}
+
+/* Contenedor superior */
+.top-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Imagen y nombre de la criatura */
+.creature-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#creature-sprite {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 4px solid var(--primary-color);
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  image-rendering: pixelated;
+  object-fit: contain;
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+}
+
+figcaption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#creature-name {
+  font-size: 1.2rem;
+  color: var(--header-color);
+  text-shadow: 2px 2px 0 #000;
+}
+
+#creature-id {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+/* Tamaño de la criatura */
+.size {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  font-size: 0.7rem;
+}
+
+#weight,
+#height {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Tipos de criatura */
+#types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.type {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.type.fire {
+  background-color: var(--fire-color);
+}
+.type.water {
+  background-color: var(--water-color);
+}
+.type.grass {
+  background-color: var(--grass-color);
+}
+.type.electric {
+  background-color: var(--electric-color);
+  color: #000;
+}
+.type.ice {
+  background-color: var(--ice-color);
+}
+.type.poison {
+  background-color: var(--poison-color);
+}
+.type.ground {
+  background-color: var(--ground-color);
+}
+.type.flying {
+  background-color: var(--flying-color);
+}
+.type.psychic {
+  background-color: var(--psychic-color);
+}
+.type.bug {
+  background-color: var(--bug-color);
+}
+.type.rock {
+  background-color: var(--rock-color);
+}
+.type.ghost {
+  background-color: var(--ghost-color);
+}
+.type.dragon {
+  background-color: var(--dragon-color);
+}
+.type.dark {
+  background-color: var(--dark-color);
+}
+.type.steel {
+  background-color: var(--steel-color);
+}
+.type.fairy {
+  background-color: var(--fairy-color);
+}
+
+/* Habilidad especial */
+#special-name {
+  font-size: 0.9rem;
+  color: var(--header-color);
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+#special-description {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Contenedor inferior */
+.bottom-container {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* Tabla de estadísticas */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+
+th {
+  text-align: center;
+  padding: 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+th:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+td {
+  padding: 8px;
+  font-size: 0.7rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+td:first-child {
+  font-weight: bold;
+  color: var(--header-color);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+td:last-child {
+  text-align: center;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Barra de progreso para estadísticas */
+td[id] {
+  position: relative;
+}
+
+td[id]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(255, 87, 34, 0.3);
+  z-index: -1;
+  border-radius: 0 4px 4px 0;
+  transition: width 0.5s ease;
+}
+
+/* Pie de página */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  font-size: 0.7rem;
+  color: rgba(224, 224, 224, 0.7);
+  border-top: 2px solid var(--border-color);
+}
+
+/* Animaciones */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Efectos de pixelado */
+.pixel-corners {
+  clip-path: polygon(
+    0% 4px,
+    4px 4px,
+    4px 0%,
+    calc(100% - 4px) 0%,
+    calc(100% - 4px) 4px,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    4px calc(100% - 4px),
+    0% calc(100% - 4px)
+  );
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .top-container {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #creature-sprite {
+    width: 180px;
+    height: 180px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #search-form {
+    gap: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.7rem;
+  }
+
+  #creature-sprite {
+    width: 150px;
+    height: 150px;
+  }
+
+  #creature-name {
+    font-size: 1rem;
+  }
+
+  th,
+  td {
+    padding: 6px;
+    font-size: 0.6rem;
+  }
+}
+
+/* Estilos para cuando se muestra la información de la criatura */
+.output.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de scanline para aspecto retro */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 18, 18, 0),
+    rgba(18, 18, 18, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.3;
+}
+
+/* Efecto de CRT para aspecto retro */
+main::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.5;
+}
