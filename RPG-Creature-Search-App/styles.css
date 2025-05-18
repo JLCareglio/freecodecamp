@@ -487,6 +487,24 @@ td[id]::after {
   }
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 /* Efectos de pixelado */
 .pixel-corners {
   clip-path: polygon(
@@ -503,6 +521,82 @@ td[id]::after {
     4px calc(100% - 4px),
     0% calc(100% - 4px)
   );
+}
+
+/* Contenedor de carga */
+.loading-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(76, 175, 80, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--secondary-color);
+  animation: spin 1s infinite linear;
+  margin-bottom: 15px;
+}
+
+.loading-container p {
+  font-size: 0.8rem;
+  color: var(--header-color);
+  text-shadow: 1px 1px 0 #000;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Contenedor de error */
+.error-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  color: var(--fire-color);
+}
+
+.error-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--fire-color);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  margin-bottom: 15px;
+  position: relative;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.error-icon::after {
+  content: "!";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.error-container p {
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Imagen en carga */
+.loading-image {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 30, 30, 0.8) 25%,
+    rgba(60, 60, 60, 0.8) 50%,
+    rgba(30, 30, 30, 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 /* Estilos para cuando se muestra la información de la criatura */

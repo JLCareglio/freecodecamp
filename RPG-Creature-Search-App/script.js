@@ -32,6 +32,8 @@ const creatureElements = {
     "random-creatures-container"
   ),
   randomCreaturesGrid: document.getElementById("random-creatures-grid"),
+  loadingContainer: document.querySelector(".loading-container"),
+  errorContainer: document.querySelector(".error-container"),
 };
 
 const searchElements = {
@@ -53,7 +55,7 @@ const searchCreature = async (query) => {
     return data;
   } catch (error) {
     console.error("Creature not found:", error);
-    alert("Creature not found");
+    // alert("Creature not found");
     return null;
   }
 };
@@ -91,8 +93,19 @@ const displayCreatureData = (creature) => {
   const imagePath = `${API.baseImgUrl}${creature.id
     .toString()
     .padStart(2, "0")}-${creature.name}-${imgSize}.png`;
+
+  creatureElements.sprite.classList.add("loading-image");
   creatureElements.sprite.src = imagePath;
   creatureElements.sprite.alt = creature.name;
+
+  creatureElements.sprite.onload = () =>
+    creatureElements.sprite.classList.remove("loading-image");
+
+  creatureElements.sprite.onerror = () => {
+    creatureElements.sprite.classList.remove("loading-image");
+    creatureElements.sprite.src = "./assets/404.png";
+    creatureElements.sprite.alt = "Image not found";
+  };
 };
 
 const handleSearch = async (event) => {
@@ -101,16 +114,34 @@ const handleSearch = async (event) => {
   const searchQuery = searchElements.input.value.trim();
   if (!searchQuery) return;
 
-  creatureElements.outputData.style.display = "block";
+  creatureElements.outputData.style.display = "none";
+  creatureElements.errorContainer.style.display = "none";
+  creatureElements.loadingContainer.style.display = "flex";
+  creatureElements.randomCreaturesContainer.style.display = "none";
 
-  const creature = await searchCreature(searchQuery);
-  if (creature) displayCreatureData(creature);
-  else creatureElements.outputData.style.display = "none";
+  try {
+    const creature = await searchCreature(searchQuery);
+
+    creatureElements.loadingContainer.style.display = "none";
+
+    if (creature) {
+      displayCreatureData(creature);
+      creatureElements.outputData.style.display = "block";
+    } else creatureElements.errorContainer.style.display = "flex";
+  } catch (error) {
+    creatureElements.loadingContainer.style.display = "none";
+    creatureElements.errorContainer.style.display = "flex";
+    console.error("Error: ", error);
+  }
 };
 
 const showRandomCreatures = () => {
   const creatures = API.allCreaturesTxt.split(",");
   const numCreatures = Math.floor(Math.random() * 6) + 3;
+
+  creatureElements.outputData.style.display = "none";
+  creatureElements.errorContainer.style.display = "none";
+  creatureElements.loadingContainer.style.display = "flex";
 
   creatureElements.randomCreaturesGrid.innerHTML = "";
 
@@ -121,25 +152,47 @@ const showRandomCreatures = () => {
       selectedCreatures.push(creatures[randomIndex]);
   }
 
+  let loadedImages = 0;
+  const totalImages = selectedCreatures.length;
+
   selectedCreatures.forEach((creatureName) => {
     const index = creatures.indexOf(creatureName) + 1;
     const img = document.createElement("img");
+    img.classList.add("loading-image");
     img.src = `${API.baseImgUrl}${index
       .toString()
       .padStart(2, "0")}-${creatureName}-256px.png`;
     img.alt = creatureName;
     img.setAttribute("data-id", index);
+
+    img.onload = () => {
+      img.classList.remove("loading-image");
+      loadedImages++;
+
+      if (loadedImages === totalImages)
+        creatureElements.loadingContainer.style.display = "none";
+    };
+
+    img.onerror = () => {
+      img.classList.remove("loading-image");
+      img.src = "./assets/404.png";
+      loadedImages++;
+
+      if (loadedImages === totalImages)
+        creatureElements.loadingContainer.style.display = "none";
+    };
+
     img.addEventListener("click", () => {
       searchElements.input.value = index;
       handleSearch();
       creatureElements.randomCreaturesContainer.style.display = "none";
       creatureElements.outputData.scrollIntoView({ behavior: "smooth" });
     });
+
     creatureElements.randomCreaturesGrid.appendChild(img);
   });
 
   creatureElements.randomCreaturesContainer.style.display = "block";
-  creatureElements.outputData.style.display = "none";
   creatureElements.randomCreaturesContainer.scrollIntoView({
     behavior: "smooth",
   });
