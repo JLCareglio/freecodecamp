@@ -103,7 +103,7 @@ const displayCreatureData = (creature) => {
 
   creatureElements.sprite.onerror = () => {
     creatureElements.sprite.classList.remove("loading-image");
-    creatureElements.sprite.src = "./assets/404.png";
+    creatureElements.sprite.src = `${API.baseImgUrl}404.png`;
     creatureElements.sprite.alt = "Image not found";
   };
 };
@@ -175,7 +175,7 @@ const showRandomCreatures = () => {
 
     img.onerror = () => {
       img.classList.remove("loading-image");
-      img.src = "./assets/404.png";
+      img.src = `${API.baseImgUrl}404.png`;
       loadedImages++;
 
       if (loadedImages === totalImages)
