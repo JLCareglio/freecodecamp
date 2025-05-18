@@ -574,8 +574,8 @@ td[id]::after {
 .error-icon::after {
   content: "!";
   position: absolute;
-  bottom: 8px;
-  left: 50%;
+  bottom: -2px;
+  left: 53%;
   transform: translateX(-50%);
   font-size: 1.5rem;
   color: #fff;
