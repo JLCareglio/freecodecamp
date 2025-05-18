@@ -43,6 +43,26 @@ const searchElements = {
   luckyButton: document.getElementById("lucky-button"),
 };
 
+const creature404 = {
+  id: 404,
+  name: "Unknown Creature",
+  special: {
+    name: "???",
+    description: "This mysterious creature's abilities remain unknown.",
+  },
+  height: "???",
+  weight: "???",
+  types: [{ name: "unknown" }],
+  stats: [
+    { name: "hp", base_stat: "?" },
+    { name: "attack", base_stat: "?" },
+    { name: "defense", base_stat: "?" },
+    { name: "special-attack", base_stat: "?" },
+    { name: "special-defense", base_stat: "?" },
+    { name: "speed", base_stat: "?" },
+  ],
+};
+
 const searchCreature = async (query) => {
   try {
     const response = await fetch(
@@ -117,7 +137,16 @@ const handleSearch = async (event) => {
   creatureElements.outputData.style.display = "none";
   creatureElements.errorContainer.style.display = "none";
   creatureElements.loadingContainer.style.display = "flex";
+  creatureElements.loadingContainer.scrollIntoView({ behavior: "smooth" });
   creatureElements.randomCreaturesContainer.style.display = "none";
+
+  if (searchQuery == 404) {
+    creatureElements.loadingContainer.style.display = "none";
+    displayCreatureData(creature404);
+    creatureElements.outputData.style.display = "block";
+    creatureElements.outputData.scrollIntoView({ behavior: "smooth" });
+    return;
+  }
 
   try {
     const creature = await searchCreature(searchQuery);
@@ -127,10 +156,11 @@ const handleSearch = async (event) => {
     if (creature) {
       displayCreatureData(creature);
       creatureElements.outputData.style.display = "block";
+      creatureElements.outputData.scrollIntoView({ behavior: "smooth" });
     } else creatureElements.errorContainer.style.display = "flex";
   } catch (error) {
-    creatureElements.loadingContainer.style.display = "none";
     creatureElements.errorContainer.style.display = "flex";
+    creatureElements.errorContainer.scrollIntoView({ behavior: "smooth" });
     console.error("Error: ", error);
   }
 };
@@ -186,7 +216,6 @@ const showRandomCreatures = () => {
       searchElements.input.value = index;
       handleSearch();
       creatureElements.randomCreaturesContainer.style.display = "none";
-      creatureElements.outputData.scrollIntoView({ behavior: "smooth" });
     });
 
     creatureElements.randomCreaturesGrid.appendChild(img);
