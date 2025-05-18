@@ -183,7 +183,7 @@ button:active {
   background-color: rgba(0, 0, 0, 0.3);
   border: 2px solid var(--border-color);
   border-radius: 8px;
-  display: none; /* Se mostrará con JavaScript cuando haya datos */
+  display: none; /* Se mostrará con JavaScript */
 }
 
 /* Imagen y nombre de la criatura */
@@ -416,7 +416,7 @@ td[id]::after {
   margin-top: 30px;
   border: 2px solid var(--border-color);
   border-radius: 8px;
-  display: none;
+  display: none; /* Se mostrará con JavaScript */
 }
 
 .random-creatures-title {
@@ -525,12 +525,12 @@ td[id]::after {
 
 /* Contenedor de carga */
 .loading-container {
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 30px;
   text-align: center;
+  display: none; /* Se mostrará con JavaScript */
 }
 
 .loading-spinner {
@@ -552,13 +552,13 @@ td[id]::after {
 
 /* Contenedor de error */
 .error-container {
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 30px;
   text-align: center;
   color: var(--fire-color);
+  display: none; /* Se mostrará con JavaScript */
 }
 
 .error-icon {
