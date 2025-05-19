@@ -98,7 +98,7 @@ h1::after {
 
 /* Contenedor principal */
 .container {
-  max-width: 700px;
+  max-width: 604px;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--card-bg);
@@ -123,14 +123,14 @@ h1::after {
 label {
   text-align: center;
   text-wrap: balance;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--header-color);
   margin-bottom: 5px;
 }
 
 input[type="text"] {
   padding: 10px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-align: center;
   background-color: #000;
   color: var(--text-color);
@@ -146,8 +146,9 @@ input[type="text"]:focus {
 }
 
 button {
-  padding: 10px 15px;
-  font-size: 0.8rem;
+  padding: 10px 5px;
+  font-size: 0.85rem;
+  line-height: 1.4;
   background-color: var(--primary-color);
   color: #fff;
   border: none;
@@ -194,8 +195,10 @@ button:active {
 }
 
 #creature-sprite {
-  width: 512px;
-  height: 512px;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 512px;
+  height: auto;
   background-color: rgba(0, 0, 0, 0.5);
   border: 4px solid var(--primary-color);
   border-radius: 15px;
@@ -221,7 +224,7 @@ figcaption {
 }
 
 #creature-id {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-color);
   background-color: rgba(0, 0, 0, 0.5);
   padding: 3px 6px;
@@ -232,7 +235,7 @@ figcaption {
 .size {
   display: flex;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 #weight,
@@ -258,7 +261,7 @@ figcaption {
 .type {
   padding: 5px 10px;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: #fff;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
@@ -323,7 +326,8 @@ figcaption {
 }
 
 #special-description {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  text-wrap: pretty;
   line-height: 1.4;
   padding: 8px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -352,7 +356,7 @@ th {
   padding: 8px;
   background-color: var(--primary-color);
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -369,7 +373,7 @@ th:last-child {
 
 td {
   padding: 8px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -423,7 +427,7 @@ td[id]::after {
   text-align: center;
   text-wrap: balance;
   color: var(--header-color);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-bottom: 20px;
   text-shadow: 1px 1px 0 #000;
 }
@@ -455,9 +459,10 @@ td[id]::after {
 /* Pie de página */
 .footer {
   text-align: center;
+  text-wrap: balance;
   padding: 20px;
   margin-top: 30px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: rgba(224, 224, 224, 0.7);
   border-top: 2px solid var(--border-color);
 }
@@ -544,7 +549,7 @@ td[id]::after {
 }
 
 .loading-container p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--header-color);
   text-shadow: 1px 1px 0 #000;
   animation: pulse 1.5s infinite ease-in-out;
@@ -583,7 +588,7 @@ td[id]::after {
 }
 
 .error-container p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-shadow: 1px 1px 0 #000;
 }
 
@@ -655,38 +660,18 @@ main::before {
 }
 
 /* Media queries para responsividad */
-@media (max-width: 590px) {
-  h1 {
+@media (max-width: 425px) {
+  h1{
     font-size: 1.5rem;
   }
-
-  #creature-sprite {
-    width: 100%;
-    height: auto;
-  }
-
-  .container {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
+  .container,
+  .output,
   #search-form {
+    padding: 10px;
     gap: 10px;
-  }
-
-  button {
-    padding: 8px 12px;
-    font-size: 0.7rem;
   }
 
   #creature-name {
     font-size: 1rem;
-  }
-
-  th,
-  td {
-    padding: 6px;
-    font-size: 0.6rem;
   }
 }
