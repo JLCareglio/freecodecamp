@@ -16,7 +16,7 @@
       "special-defense": 55,
       "speed": 100
     },
-    "types": [{ "name": "fire" }]
+    "types": ["fire"]
   },
   {
     "id": 2,
@@ -35,7 +35,7 @@
       "special-defense": 70,
       "speed": 40
     },
-    "types": [{ "name": "water" }, { "name": "rock" }]
+    "types": ["water", "rock"]
   },
   {
     "id": 3,
@@ -54,7 +54,7 @@
       "special-defense": 80,
       "speed": 85
     },
-    "types": [{ "name": "electric" }, { "name": "dragon" }]
+    "types": ["electric", "dragon"]
   },
   {
     "id": 4,
@@ -73,7 +73,7 @@
       "special-defense": 90,
       "speed": 50
     },
-    "types": [{ "name": "grass" }, { "name": "poison" }]
+    "types": ["grass", "poison"]
   },
   {
     "id": 5,
@@ -92,7 +92,7 @@
       "special-defense": 105,
       "speed": 95
     },
-    "types": [{ "name": "ice" }, { "name": "fairy" }]
+    "types": ["ice", "fairy"]
   },
   {
     "id": 6,
@@ -111,7 +111,7 @@
       "special-defense": 80,
       "speed": 102
     },
-    "types": [{ "name": "ground" }, { "name": "flying" }]
+    "types": ["ground", "flying"]
   },
   {
     "id": 7,
@@ -130,7 +130,7 @@
       "special-defense": 65,
       "speed": 120
     },
-    "types": [{ "name": "fire" }, { "name": "bug" }]
+    "types": ["fire", "bug"]
   },
   {
     "id": 8,
@@ -149,7 +149,7 @@
       "special-defense": 100,
       "speed": 88
     },
-    "types": [{ "name": "dark" }, { "name": "psychic" }]
+    "types": ["dark", "psychic"]
   },
   {
     "id": 9,
@@ -168,7 +168,7 @@
       "special-defense": 75,
       "speed": 40
     },
-    "types": [{ "name": "ground" }, { "name": "steel" }]
+    "types": ["ground", "steel"]
   },
   {
     "id": 10,
@@ -187,7 +187,7 @@
       "special-defense": 100,
       "speed": 80
     },
-    "types": [{ "name": "water" }, { "name": "ghost" }]
+    "types": ["water", "ghost"]
   },
   {
     "id": 11,
@@ -206,7 +206,7 @@
       "special-defense": 80,
       "speed": 90
     },
-    "types": [{ "name": "fire" }, { "name": "dragon" }]
+    "types": ["fire", "dragon"]
   },
   {
     "id": 12,
@@ -225,7 +225,7 @@
       "special-defense": 80,
       "speed": 60
     },
-    "types": [{ "name": "grass" }, { "name": "dark" }]
+    "types": ["grass", "dark"]
   },
   {
     "id": 13,
@@ -244,7 +244,7 @@
       "special-defense": 85,
       "speed": 110
     },
-    "types": [{ "name": "ice" }, { "name": "electric" }]
+    "types": ["ice", "electric"]
   },
   {
     "id": 14,
@@ -263,7 +263,7 @@
       "special-defense": 100,
       "speed": 45
     },
-    "types": [{ "name": "rock" }, { "name": "psychic" }]
+    "types": ["rock", "psychic"]
   },
   {
     "id": 15,
@@ -282,7 +282,7 @@
       "special-defense": 95,
       "speed": 125
     },
-    "types": [{ "name": "flying" }, { "name": "fairy" }]
+    "types": ["flying", "fairy"]
   },
   {
     "id": 16,
@@ -301,7 +301,7 @@
       "special-defense": 60,
       "speed": 85
     },
-    "types": [{ "name": "fire" }, { "name": "ground" }]
+    "types": ["fire", "ground"]
   },
   {
     "id": 17,
@@ -320,7 +320,7 @@
       "special-defense": 90,
       "speed": 55
     },
-    "types": [{ "name": "flying" }, { "name": "rock" }]
+    "types": ["flying", "rock"]
   },
   {
     "id": 18,
@@ -339,7 +339,7 @@
       "special-defense": 100,
       "speed": 95
     },
-    "types": [{ "name": "dark" }, { "name": "poison" }]
+    "types": ["dark", "poison"]
   },
   {
     "id": 19,
@@ -358,7 +358,7 @@
       "special-defense": 90,
       "speed": 30
     },
-    "types": [{ "name": "steel" }, { "name": "water" }]
+    "types": ["steel", "water"]
   },
   {
     "id": 20,
@@ -377,6 +377,6 @@
       "special-defense": 115,
       "speed": 55
     },
-    "types": [{ "name": "fairy" }, { "name": "steel" }]
+    "types": ["fairy", "steel"]
   }
 ]

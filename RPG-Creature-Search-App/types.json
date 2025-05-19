@@ -22,7 +22,7 @@
   {
     "type": "ice",
     "strengths": ["grass", "ground", "flying", "dragon"],
-    "weaknesses": ["fire", "fighting", "rock", "steel"]
+    "weaknesses": ["fire", "rock", "steel"]
   },
   {
     "type": "poison",
@@ -36,12 +36,12 @@
   },
   {
     "type": "flying",
-    "strengths": ["grass", "fighting", "bug"],
+    "strengths": ["grass", "bug"],
     "weaknesses": ["electric", "ice", "rock"]
   },
   {
     "type": "psychic",
-    "strengths": ["fighting", "poison"],
+    "strengths": ["poison"],
     "weaknesses": ["bug", "ghost", "dark"]
   },
   {
@@ -52,7 +52,7 @@
   {
     "type": "rock",
     "strengths": ["fire", "ice", "flying", "bug"],
-    "weaknesses": ["water", "grass", "fighting", "ground", "steel"]
+    "weaknesses": ["water", "grass", "ground", "steel"]
   },
   {
     "type": "ghost",
@@ -67,16 +67,16 @@
   {
     "type": "dark",
     "strengths": ["psychic", "ghost"],
-    "weaknesses": ["fighting", "bug", "fairy"]
+    "weaknesses": ["bug", "fairy"]
   },
   {
     "type": "steel",
     "strengths": ["ice", "rock", "fairy"],
-    "weaknesses": ["fire", "fighting", "ground"]
+    "weaknesses": ["fire", "ground"]
   },
   {
     "type": "fairy",
-    "strengths": ["fighting", "dragon", "dark"],
+    "strengths": ["dragon", "dark"],
     "weaknesses": ["poison", "steel"]
   }
 ]
