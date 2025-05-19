@@ -114,6 +114,7 @@ const displayCreatureData = (creature) => {
     .toString()
     .padStart(2, "0")}-${creature.name}-${imgSize}.png`;
 
+  creatureElements.sprite.src = "";
   creatureElements.sprite.classList.add("loading-image");
   creatureElements.sprite.src = imagePath;
   creatureElements.sprite.alt = creature.name;
