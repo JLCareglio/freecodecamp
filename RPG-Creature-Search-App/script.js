@@ -43,6 +43,15 @@ const searchElements = {
   luckyButton: document.getElementById("lucky-button"),
 };
 
+const statRanges = {
+  hp: { min: 55, max: 130, low: 70, high: 100, optimum: 130 },
+  attack: { min: 50, max: 120, low: 70, high: 100, optimum: 120 },
+  defense: { min: 50, max: 140, low: 70, high: 100, optimum: 140 },
+  "special-attack": { min: 50, max: 120, low: 70, high: 100, optimum: 120 },
+  "special-defense": { min: 55, max: 115, low: 70, high: 100, optimum: 115 },
+  speed: { min: 30, max: 125, low: 60, high: 100, optimum: 125 },
+};
+
 const creature404 = {
   id: 404,
   name: "Unknown Creature",
@@ -80,6 +89,25 @@ const searchCreature = async (query) => {
   }
 };
 
+const updateCreatureStat = (stat, statRanges) => {
+  const { name, base_stat } = stat;
+  const statName = name.replace("-", "_");
+
+  const statElement = creatureElements.stats[statName];
+  if (statElement) statElement.textContent = base_stat;
+
+  const meterElement = document.getElementById(`${name}-meter`);
+  if (meterElement) {
+    meterElement.value = base_stat;
+
+    const range = statRanges[name];
+    if (range) {
+      const { min, max, low, high, optimum } = range;
+      Object.assign(meterElement, { min, max, low, high, optimum });
+    }
+  }
+};
+
 const getRandomCreature = async () => {
   const randomId = Math.floor(Math.random() * 20) + 1;
   return searchCreature(randomId);
@@ -104,10 +132,7 @@ const displayCreatureData = (creature) => {
     creatureElements.types.appendChild(typeElement);
   });
 
-  creature.stats.forEach((stat) => {
-    const statElement = creatureElements.stats[stat.name.replace("-", "_")];
-    if (statElement) statElement.textContent = stat.base_stat;
-  });
+  creature.stats.forEach((stat) => updateCreatureStat(stat, statRanges));
 
   const imgSize = window.innerWidth === 338 ? "256px" : "512px";
   const imagePath = `${API.baseImgUrl}${creature.id
