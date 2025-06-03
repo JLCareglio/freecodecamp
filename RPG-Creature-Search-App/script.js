@@ -44,12 +44,12 @@ const searchElements = {
 };
 
 const statRanges = {
-  hp: { min: 55, max: 130, low: 70, high: 100, optimum: 130 },
-  attack: { min: 50, max: 120, low: 70, high: 100, optimum: 120 },
-  defense: { min: 50, max: 140, low: 70, high: 100, optimum: 140 },
-  "special-attack": { min: 50, max: 120, low: 70, high: 100, optimum: 120 },
-  "special-defense": { min: 55, max: 115, low: 70, high: 100, optimum: 115 },
-  speed: { min: 30, max: 125, low: 60, high: 100, optimum: 125 },
+  hp: { min: 0, max: 130, low: 40, high: 90, optimum: 130 },
+  attack: { min: 0, max: 120, low: 40, high: 85, optimum: 120 },
+  defense: { min: 0, max: 140, low: 45, high: 95, optimum: 140 },
+  "special-attack": { min: 0, max: 120, low: 40, high: 85, optimum: 120 },
+  "special-defense": { min: 0, max: 115, low: 35, high: 80, optimum: 115 },
+  speed: { min: 0, max: 125, low: 40, high: 85, optimum: 125 },
 };
 
 const creature404 = {
