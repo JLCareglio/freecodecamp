@@ -63,12 +63,12 @@ const creature404 = {
   weight: "???",
   types: [{ name: "unknown" }],
   stats: [
-    { name: "hp", base_stat: "?" },
-    { name: "attack", base_stat: "?" },
-    { name: "defense", base_stat: "?" },
-    { name: "special-attack", base_stat: "?" },
-    { name: "special-defense", base_stat: "?" },
-    { name: "speed", base_stat: "?" },
+    { name: "hp", base_stat: 404 },
+    { name: "attack", base_stat: 404 },
+    { name: "defense", base_stat: 404 },
+    { name: "special-attack", base_stat: 404 },
+    { name: "special-defense", base_stat: 404 },
+    { name: "speed", base_stat: 404 },
   ],
 };
 
