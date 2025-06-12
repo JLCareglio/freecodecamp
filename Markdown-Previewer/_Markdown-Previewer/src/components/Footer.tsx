@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
       <p className="text-gray-400 font-medium">
         {"👀 Mira el "}
         <a
-          href="https://github.com/jlcareglio/freecodecamp/Markdown-Previewer/_Markdown-Previewer"
+          href="https://github.com/JLCareglio/freecodecamp/tree/main/Markdown-Previewer/_Markdown-Previewer"
           className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
           target="_blank"
         >
