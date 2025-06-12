@@ -12,6 +12,11 @@ This repository contains all the projects I have created while completing the Fr
 - [Cash Register](https://jlcareglio.github.io/freecodecamp/Cash-Register/index.html)
 - [RPG Creature Search App](https://jlcareglio.github.io/freecodecamp/RPG-Creature-Search-App/index.html)
 
+### Front End Development Libraries
+
+- [Random-Quote-Machine](https://jlcareglio.github.io/freecodecamp/Random-Quote-Machine/index.html)
+- [Markdown Previewer](https://jlcareglio.github.io/freecodecamp/Markdown-Previewer/index.html)
+
 ## FreeCodeCamp Profile
 
 You can view my FreeCodeCamp profile here: [JLCareglio](https://www.freecodecamp.org/JLCareglio)
