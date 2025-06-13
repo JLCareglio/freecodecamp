@@ -207,7 +207,16 @@ function App() {
           </>
         )}
       </div>
-    </div>
+    <footer className="footer">
+      <div className="container p-0">
+        <p className="dev-name">Dev: Jesús Lautaro Careglio Albornoz</p>
+        <p>Este proyecto fue construido con <span className="fw-semibold">React</span>, <span className="fw-semibold">JavaScript</span> y <span className="fw-semibold">Bootstrap</span>.</p>
+        <p className="mb-0">
+          Puedes ver el <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine" target="_blank" rel="noopener noreferrer">código fuente</a> y también ver el resto de mis <a href="https://jlcareglio.github.io/freecodecamp/" target="_blank" rel="noopener noreferrer">proyectos de freeCodeCamp</a>.
+        </p>
+      </div>
+    </footer>
+  </div>
   );
 }
 

@@ -267,6 +267,11 @@ input[type="number"]:focus {
   appearance: textfield;
 }
 
+a, a:visited {
+  color: var(--accent-color);
+  max-height: 32px;
+}
+
 @media (max-width: 450px) {
   nav {
     padding: 0.5rem 1rem;

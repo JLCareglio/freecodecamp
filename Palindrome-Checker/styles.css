@@ -199,6 +199,11 @@ button:disabled {
   margin-top: auto;
 }
 
+a, a:visited {
+  color: var(--accent-color);
+  max-height: 32px;
+}
+
 @media (max-width: 500px) {
   .language-nav {
     flex-direction: column;
