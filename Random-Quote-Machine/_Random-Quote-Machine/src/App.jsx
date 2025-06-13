@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaXTwitter as FaX, FaThreads, FaFacebook } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
 
 const ES_QUOTES_API =
   "https://opensheet.vercel.app/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/Citas";
@@ -199,6 +200,15 @@ function App() {
                 >
                   <FaFacebook />
                 </a>
+                <a
+                  className="social-share edit-button"
+                  href="https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/edit?gid=0#gid=0&range=A87"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Agregar nueva cita"
+                >
+                  <FaEdit />
+                </a>
               </div>
               <button id="new-quote" className="btn" onClick={handleNewQuote}>
                 Nueva Cita
@@ -207,16 +217,18 @@ function App() {
           </>
         )}
       </div>
-    <footer className="footer">
-      <div className="container p-0">
-        <p className="dev-name">Dev: Jesús Lautaro Careglio Albornoz</p>
-        <p>Este proyecto fue construido con <span className="fw-semibold">React</span>, <span className="fw-semibold">JavaScript</span> y <span className="fw-semibold">Bootstrap</span>.</p>
-        <p className="mb-0">
-          Puedes ver el <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine" target="_blank" rel="noopener noreferrer">código fuente</a> y también ver el resto de mis <a href="https://jlcareglio.github.io/freecodecamp/" target="_blank" rel="noopener noreferrer">proyectos de freeCodeCamp</a>.
-        </p>
-      </div>
-    </footer>
-  </div>
+      <footer className="footer">
+        <div className="container p-0">
+          <p className="dev-name">Dev: Jesús Lautaro Careglio Albornoz</p>
+          <p>
+            Este proyecto fue construido con <span className="fw-semibold">React</span>, <span className="fw-semibold">JavaScript</span> y <span className="fw-semibold">Bootstrap</span> + OpenSheet-API.<br />
+            Entra <a href="https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/edit?gid=0#gid=0&range=A87" target="_blank" rel="noopener noreferrer" className="edit-link">aquí</a> para agregar/aporta tu cita informática. LEER <a href="./DISCLAIMER.html" target="_blank" rel="noopener noreferrer">DISCLAIMER</a>.</p>
+          <p className="mb-0">
+            Puedes ver el <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine" target="_blank" rel="noopener noreferrer">código fuente</a> y también ver el resto de mis <a href="https://jlcareglio.github.io/freecodecamp/" target="_blank" rel="noopener noreferrer">proyectos de freeCodeCamp</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }
 

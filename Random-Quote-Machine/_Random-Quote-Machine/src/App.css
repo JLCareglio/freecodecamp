@@ -3,10 +3,12 @@
   --quote-box-bg: #1e1e1e;
   --text-color: #e0e0e0;
   --accent-color: #8a2be2;
-  --accent-hover: #9d4edd;
+  --accent-hover: #b478ed;
   --border-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.5);
   --transition-time: 0.5s;
+  --gold-color: #ffd700;
+  --gold-hover: #ffee33;
 }
 
 @keyframes gradientBG {
@@ -123,6 +125,29 @@
   box-shadow: 0 4px 8px rgba(138, 43, 226, 0.3);
 }
 
+.social-share.edit-button {
+  color: var(--gold-color);
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.social-share.edit-button:hover {
+  color: var(--gold-hover);
+  background-color: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.footer a.edit-link {
+  color: var(--gold-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer a.edit-link:hover {
+  color: var(--gold-hover);
+  text-decoration: underline;
+}
+
 #new-quote {
   background-color: var(--accent-color);
   border: none;
@@ -174,7 +199,7 @@
 }
 
 .footer a {
-  color: var(--accent-color);
+  color: var(--accent-hover);
   font-weight: 600;
   text-decoration: underline;
 }
