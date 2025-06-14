@@ -219,6 +219,15 @@
   text-align: center;
   font-family: 'Courier New', monospace;
   text-shadow: 0 0 10px var(--shadow-glow);
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 // Timer display

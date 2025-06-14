@@ -6,6 +6,7 @@ import LengthControl from './LengthControl';
 import TimerDisplay from './TimerDisplay';
 import TimerControls from './TimerControls';
 import AudioNotification from './AudioNotification';
+import Footer from './Footer';
 import {
   incrementBreak,
   decrementBreak,
@@ -20,11 +21,11 @@ const PomodoroTimer: React.FC = () => {
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
 
-    if (isRunning && timeLeft > 0) {
+    if (isRunning && timeLeft >= 0) {
       interval = setInterval(() => {
         dispatch(decrementTime());
       }, 1000);
-    } else if (timeLeft === 0) {
+    } else if (timeLeft <= 0) {
       // Play audio notification
       const audio = document.getElementById('beep') as HTMLAudioElement;
       if (audio) {
@@ -66,6 +67,7 @@ const PomodoroTimer: React.FC = () => {
         <TimerDisplay />
         <TimerControls />
         <AudioNotification />
+        <Footer />
       </div>
     </div>
   );

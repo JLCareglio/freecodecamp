@@ -15,27 +15,27 @@ const timerSlice = createSlice({
   initialState,
   reducers: {
     incrementBreak: state => {
-      if (!state.isRunning && state.breakLength < 60) {
+      if (state.breakLength < 60) {
         state.breakLength += 1;
       }
     },
     decrementBreak: state => {
-      if (!state.isRunning && state.breakLength > 1) {
+      if (state.breakLength > 1) {
         state.breakLength -= 1;
       }
     },
     incrementSession: state => {
-      if (!state.isRunning && state.sessionLength < 60) {
+      if (state.sessionLength < 60) {
         state.sessionLength += 1;
-        if (state.currentMode === 'session') {
+        if (state.currentMode === 'session' && !state.isRunning) {
           state.timeLeft = state.sessionLength * 60;
         }
       }
     },
     decrementSession: state => {
-      if (!state.isRunning && state.sessionLength > 1) {
+      if (state.sessionLength > 1) {
         state.sessionLength -= 1;
-        if (state.currentMode === 'session') {
+        if (state.currentMode === 'session' && !state.isRunning) {
           state.timeLeft = state.sessionLength * 60;
         }
       }
@@ -44,7 +44,7 @@ const timerSlice = createSlice({
       state.isRunning = !state.isRunning;
     },
     decrementTime: state => {
-      if (state.timeLeft > 0) {
+      if (state.timeLeft >= 0) {
         state.timeLeft -= 1;
       }
     },

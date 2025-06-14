@@ -30,9 +30,18 @@ const LengthControl: React.FC<LengthControlProps> = ({
         >
           <Minus size={20} />
         </button>
-        <div id={`${id}-length`} className="length-display">
-          {length}
-        </div>
+        <input
+          id={`${id}-length`}
+          type="number"
+          value={length}
+          readOnly
+          className="length-display"
+          style={{
+            MozAppearance: 'textfield',
+            WebkitAppearance: 'none',
+            width: '94px',
+          }}
+        />
         <button
           id={`${id}-increment`}
           className="control-btn increment"
