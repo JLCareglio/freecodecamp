@@ -71,9 +71,12 @@ input[type="number"] {
 
 /* Estilos para el teclado */
 .keypad-container {
-	height: 368px;
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+	max-height: 300px;
+	width: 100%;
+	max-width: 336px;
 }
 
 .keypad-grid {
@@ -130,17 +133,4 @@ input[type="number"] {
 
 .keypad-button.clear:hover {
 	background-color: #e4606d;
-}
-
-/* Clase personalizada para altura fija del teclado */
-.h-368px {
-	height: 368px;
-}
-
-/* Estilo para el contenedor del teclado */
-.keypad-container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	max-width: 336px;
 }

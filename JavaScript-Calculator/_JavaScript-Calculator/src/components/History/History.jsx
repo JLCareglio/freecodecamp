@@ -36,11 +36,11 @@ const History = React.forwardRef(
 
 		return (
 			<div
-				className={`bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 ${className}`}
+				className={`bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 h-full ${className}`}
 			>
 				<div
 					ref={setRefs}
-					className="divide-y divide-gray-700 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
+					className="divide-y divide-gray-700 h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
 					onScroll={handleScroll}
 				>
 					{items.length > 0 ? (

@@ -10,6 +10,7 @@ const Keypad = ({
 	onEqualsClick,
 	onClearClick,
 	onAllClearClick,
+	onBackspaceClick,
 	className = "",
 }) => {
 	const handleButtonClick = (button) => {
@@ -33,7 +34,7 @@ const Keypad = ({
 				onAllClearClick();
 				break;
 			case BUTTON_TYPES.BACKSPACE:
-				// Backspace functionality will be implemented later
+				onBackspaceClick();
 				break;
 			default:
 				break;
@@ -74,6 +75,7 @@ Keypad.propTypes = {
 	onEqualsClick: PropTypes.func.isRequired,
 	onClearClick: PropTypes.func.isRequired,
 	onAllClearClick: PropTypes.func.isRequired,
+	onBackspaceClick: PropTypes.func.isRequired,
 	className: PropTypes.string,
 };
 

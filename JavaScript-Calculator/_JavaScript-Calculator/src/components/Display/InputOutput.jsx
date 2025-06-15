@@ -11,14 +11,18 @@ const InputOutput = ({
 	const getDisplayValue = () => {
 		if (!lastInput) return "0";
 
+		// If the last input was a number, show only the current number being entered
 		if (lastInput === "number") {
-			const numbers = expression.split(/[+\-*/×÷]/);
-			return numbers[numbers.length - 1] || "0";
+			// Split by operators but keep them in the result to handle negative numbers
+			const parts = expression.split(/([+\-*/×÷%])/);
+			// Get the last part which should be the current number
+			return parts[parts.length - 1] || "0";
 		}
 
+		// If the last input was an operator, show the operator
 		if (lastInput === "operator") {
 			const lastChar = expression[expression.length - 1];
-			if (lastChar && /[+\-*/×÷]/.test(lastChar)) {
+			if (lastChar && /[+\-*/×÷%]/.test(lastChar)) {
 				return lastChar;
 			}
 			return "";
@@ -30,7 +34,7 @@ const InputOutput = ({
 	return (
 		<div
 			id={id}
-			className={`min-h-[3rem] text-3xl font-medium text-right px-4 pb-2 pt-1 overflow-x-auto whitespace-nowrap text-white font-mono scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 ${className}`}
+			className={`text-3xl font-medium text-right px-4 overflow-x-auto whitespace-nowrap text-white font-mono scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 ${className}`}
 			aria-live="polite"
 			aria-atomic="true"
 		>

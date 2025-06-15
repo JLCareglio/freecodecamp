@@ -4,7 +4,7 @@ import React from "react";
 const HistoryItem = ({ expression, result, onClick, isActive }) => {
 	return (
 		<div
-			className={`p-3 border-b border-gray-700 
+			className={`px-3 py-1 border-b border-gray-700 
 			transition-all duration-200 ease-in-out
 			${isActive ? "bg-blue-900/30 border-l-4 border-l-blue-500" : "hover:bg-gray-700/50"}
 			cursor-pointer

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Display from "./components/Display/Display";
+import Head from "./components/Head/Head";
 import History from "./components/History/History";
 import Keypad from "./components/Keypad/Keypad";
+import Footer from "./components/Footer";
 import { BUTTON_TYPES } from "./constants/keypadLayout.jsx";
 import useKeyboardInput from "./hooks/useKeyboardInput";
 import {
@@ -16,6 +18,7 @@ import {
 	selectLastInput,
 	selectLastResult,
 	setOperator,
+	backspace,
 } from "./store/calculatorSlice";
 import {
 	addToHistory,
@@ -95,6 +98,11 @@ function App() {
 		dispatch(clear());
 	};
 
+	// Handle backspace button click
+	const handleBackspaceClick = () => {
+		dispatch(backspace());
+	};
+
 	// Handle history item selection
 	const handleHistorySelect = (item) => {
 		dispatch(loadFromHistory(item));
@@ -114,70 +122,21 @@ function App() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-			<div className="w-full max-w-[336px] flex flex-col">
-				<div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col border border-gray-700">
+		<div className="min-h-screen bg-gray-900 flex items-start justify-center p-4 overflow-y-auto">
+			<div className="w-full max-w-[336px] flex flex-col min-h-[calc(100vh-2rem)] max-h-none">
+				<div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col border border-gray-700 h-full">
 					{/* Header */}
-					<div className="p-4 bg-gradient-to-r from-blue-800/90 to-blue-700/90 text-blue-100">
-						<div className="flex justify-between items-center">
-							<h1 className="text-xl font-bold">JS-Calculator</h1>
-							<div className="flex items-center space-x-2">
-								{showHistory && (
-									<button
-										onClick={handleHistoryClear}
-										className="p-2 rounded-full hover:bg-rose-800/80 transition-colors text-rose-100 hover:text-white"
-										aria-label="Clear history"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={1.5}
-											stroke="currentColor"
-											className="size-6"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-											/>
-										</svg>
-									</button>
-								)}
-								<button
-									onClick={toggleHistory}
-									className={`p-2 rounded-full transition-colors text-emerald-100 ${showHistory ? "bg-emerald-700/80 hover:bg-emerald-600/80" : "hover:bg-emerald-700/50 hover:text-white"}`}
-									aria-label={showHistory ? "Hide history" : "Show history"}
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										strokeWidth={1.5}
-										stroke="currentColor"
-										className="size-6"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-										/>
-									</svg>
-								</button>
-							</div>
-						</div>
-					</div>
+					<Head
+						showHistory={showHistory}
+						hasHistory={history.length > 0}
+						onToggleHistory={toggleHistory}
+						onClearHistory={handleHistoryClear}
+					/>
 
-					<div
-						className="p-4 flex flex-col bg-gray-800"
-						style={{ height: "calc(100% - 64px)" }}
-					>
+					<div className="p-4 flex flex-col bg-gray-800 flex-1 min-h-0 overflow-y-auto">
 						{/* History Panel */}
 						{showHistory && (
-							<div
-								className="mb-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
-								style={{ flex: "1 1 auto", minHeight: "0", overflowY: "auto" }}
-							>
+							<div className="flex-1 pb-2 max-h-[213px] overflow-y-auto">
 								<History
 									ref={historyContainerRef}
 									items={history}
@@ -194,11 +153,10 @@ function App() {
 							currentValue={currentValue}
 							currentResult={currentResult}
 							lastInput={lastInput}
-							className="mb-4"
 						/>
 
 						{/* Keypad */}
-						<div className="w-full" style={{ height: "368px", flexShrink: 0 }}>
+						<div className="w-full keypad-container">
 							<Keypad
 								onNumberClick={handleNumberClick}
 								onOperatorClick={handleOperatorClick}
@@ -206,16 +164,14 @@ function App() {
 								onEqualsClick={handleEqualsClick}
 								onClearClick={handleClearClick}
 								onAllClearClick={handleAllClearClick}
+								onBackspaceClick={handleBackspaceClick}
 								className="w-full h-full"
 							/>
 						</div>
 					</div>
 				</div>
 
-				{/* Footer */}
-				<div className="mt-4 text-center text-sm text-gray-500">
-					<p>Dev: Jesús Lautaro Careglio Albornoz</p>
-				</div>
+				<Footer />
 			</div>
 		</div>
 	);

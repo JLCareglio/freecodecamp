@@ -55,20 +55,49 @@ const calculatorSlice = createSlice({
 				return;
 			}
 
+			// Handle percentage as a regular operator
+			if (operator === "%") {
+				// Don't add percentage if the last input was an operator (except after a number)
+				if (state.lastInput === "operator" && !state.expression.endsWith("%")) {
+					return;
+				}
+				// If last input was a number, add the percentage operator
+				if (state.lastInput === "number" && !state.resetOnNextInput) {
+					state.expression += "%";
+					state.currentValue = "%";
+					state.lastInput = "operator";
+					state.lastOperator = "%";
+				}
+				return;
+			}
+
 			// Handle parentheses
 			if (operator === "()") {
 				// Count open and close parentheses to determine what to add
 				const openParens = (state.expression.match(/\(/g) || []).length;
 				const closeParens = (state.expression.match(/\)/g) || []).length;
 
+				// Handle the case when expression is "0" (after AC)
+				if (state.expression === "0") {
+					state.expression = "(";
+					state.currentValue = "(";
+					state.lastInput = "number";
+					state.resetOnNextInput = false;
+					return;
+				}
+
 				// If we need to add an opening parenthesis
 				if (
 					openParens <= closeParens ||
 					operators.includes(lastChar) ||
-					state.expression === "0" ||
 					state.lastInput === "operator"
 				) {
-					state.expression += "(";
+					// If the last input was a number, add multiplication before the parenthesis
+					if (state.lastInput === "number" && !state.resetOnNextInput) {
+						state.expression += "×(";
+					} else {
+						state.expression += "(";
+					}
 				} else {
 					state.expression += ")";
 				}
@@ -128,8 +157,10 @@ const calculatorSlice = createSlice({
 				// Replace × with * and ÷ with / for evaluation
 				expr = expr.replace(/×/g, "*").replace(/÷/g, "/");
 
-				// Handle percentage operations
-				expr = expr.replace(/([0-9.]+)%/g, "($1/100)");
+				// Handle percentage operations as a binary operator
+				expr = expr.replace(/([\d.]+)%([\d.]+)/g, "($1/100*$2)");
+				// Also handle percentage at the end of the expression
+				expr = expr.replace(/([\d.]+)%(?!\d)/g, "($1/100)");
 
 				// Use Function constructor to safely evaluate the expression
 				const result = new Function(`return ${expr}`)();
@@ -164,6 +195,55 @@ const calculatorSlice = createSlice({
 			state.resetOnNextInput = true;
 			state.lastInput = "number";
 		},
+
+		backspace: (state) => {
+			if (state.resetOnNextInput) {
+				return; // Don't allow backspace right after calculation
+			}
+
+			// If there's nothing to delete
+			if (state.expression.length === 0) {
+				return;
+			}
+
+			// Handle single character case or last character
+			if (state.expression.length === 1) {
+				state.expression = "0";
+				state.currentValue = "0";
+				state.lastInput = null;
+				state.lastOperator = null;
+				return;
+			}
+
+			// Remove the last character
+			state.expression = state.expression.slice(0, -1);
+
+			// Update current value based on the new expression
+			const lastChar = state.expression.slice(-1);
+
+			// If the last character is an operator, update lastInput and lastOperator
+			if (/[+\-×÷%]/.test(lastChar)) {
+				state.lastInput = "operator";
+				state.lastOperator = lastChar;
+				// Get the previous number before the operator for currentValue
+				const parts = state.expression.split(/[+\-×÷%]/);
+				state.currentValue = parts[parts.length - 1] || "0";
+			} else {
+				// It's a number or decimal point
+				state.lastInput = "number";
+				// Update currentValue to the current number being entered
+				const parts = state.expression.split(/[+\-×÷%]/);
+				state.currentValue = parts[parts.length - 1];
+			}
+
+			// If we deleted the last character
+			if (state.expression.length === 0) {
+				state.expression = "0";
+				state.currentValue = "0";
+				state.lastInput = null;
+				state.lastOperator = null;
+			}
+		},
 	},
 });
 
@@ -177,13 +257,18 @@ export const selectCurrentResult = (state) => {
 	const { expression, lastInput } = state.calculator;
 
 	// Don't calculate if there's no operator or incomplete expression
-	if (!/[+\-*/×÷]/.test(expression) || lastInput === "operator") {
+	if (!/[+\-*/×÷%]/.test(expression) || lastInput === "operator") {
 		return null;
 	}
 
 	try {
 		// First, replace × with * and ÷ with / for evaluation
 		let expr = expression.replace(/×/g, "*").replace(/÷/g, "/");
+
+		// Handle percentage operations as a binary operator
+		expr = expr.replace(/([\d.]+)%([\d.]+)/g, "($1/100*$2)");
+		// Also handle percentage at the end of the expression
+		expr = expr.replace(/([\d.]+)%(?!\d)/g, "($1/100)");
 
 		// Handle cases where there might be a negative number after an operator
 		expr = expr.replace(/([+\-*/])-/g, "$1 -");
@@ -205,7 +290,13 @@ export const selectCurrentResult = (state) => {
 	}
 };
 
-export const { appendNumber, setOperator, calculate, clear, loadFromHistory } =
-	calculatorSlice.actions;
+export const {
+	appendNumber,
+	setOperator,
+	calculate,
+	clear,
+	loadFromHistory,
+	backspace,
+} = calculatorSlice.actions;
 
 export default calculatorSlice.reducer;
