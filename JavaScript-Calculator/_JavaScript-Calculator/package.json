@@ -1,0 +1,28 @@
+{
+	"author": "Jesús Lautaro Careglio Albornoz",
+	"name": "javascript-calculator",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"format": "biome format --write ./src",
+		"lint": "biome lint --write ./src",
+		"check": "biome check --write ./src"
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "2.8.2",
+		"@tailwindcss/vite": "4.1.10",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"react-redux": "9.2.0",
+		"tailwindcss": "4.1.10"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@vitejs/plugin-react-swc": "3.10.2",
+		"vite": "6.3.5"
+	}
+}
