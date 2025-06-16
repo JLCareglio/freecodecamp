@@ -20,13 +20,19 @@ const History = React.forwardRef(
 			}
 		};
 
+		const prevItemsLengthRef = useRef(items.length);
+
 		// Efecto para manejar el scroll automático
 		useEffect(() => {
-			if (containerRef.current && wasScrolledToBottom.current) {
-				const { scrollHeight } = containerRef.current;
-				containerRef.current.scrollTop = scrollHeight;
+			if (containerRef.current) {
+				// Solo hacer scroll si se agregaron nuevos items
+				if (items.length > prevItemsLengthRef.current) {
+					const { scrollHeight } = containerRef.current;
+					containerRef.current.scrollTop = scrollHeight;
+				}
+				prevItemsLengthRef.current = items.length;
 			}
-		}, [items]);
+		}, [items.length]); // Solo dependemos de items.length
 
 		const handleScroll = (e) => {
 			const { scrollTop, scrollHeight, clientHeight } = e.target;

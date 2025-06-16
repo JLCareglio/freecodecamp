@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Display from "./components/Display/Display";
+import Footer from "./components/Footer";
 import Head from "./components/Head/Head";
 import History from "./components/History/History";
 import Keypad from "./components/Keypad/Keypad";
-import Footer from "./components/Footer";
 import { BUTTON_TYPES } from "./constants/keypadLayout.jsx";
 import useKeyboardInput from "./hooks/useKeyboardInput";
 import {
 	appendNumber,
+	backspace,
 	calculate,
 	clear,
 	loadFromHistory,
@@ -18,7 +19,6 @@ import {
 	selectLastInput,
 	selectLastResult,
 	setOperator,
-	backspace,
 } from "./store/calculatorSlice";
 import {
 	addToHistory,

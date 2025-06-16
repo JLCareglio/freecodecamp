@@ -30,7 +30,7 @@ export const evaluateExpression = (expression) => {
 		const result = new Function(`return (${expr})`)();
 
 		// Handle division by zero
-		if (!isFinite(result)) {
+		if (!Number.isFinite(result)) {
 			throw new Error("Division by zero");
 		}
 

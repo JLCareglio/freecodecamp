@@ -3,11 +3,12 @@ import React from "react";
 
 const HistoryItem = ({ expression, result, onClick, isActive }) => {
 	return (
-		<div
-			className={`px-3 py-1 border-b border-gray-700 
+		<button
+			type="button"
+			className={`w-full text-left px-3 py-1 border-b border-gray-700 
 			transition-all duration-200 ease-in-out
 			${isActive ? "bg-blue-900/30 border-l-4 border-l-blue-500" : "hover:bg-gray-700/50"}
-			cursor-pointer
+			cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
 		`}
 			onClick={onClick}
 			aria-label={`Previous calculation: ${expression} = ${result}`}
@@ -16,7 +17,7 @@ const HistoryItem = ({ expression, result, onClick, isActive }) => {
 				{expression}
 			</div>
 			<div className="text-right font-medium text-blue-300">= {result}</div>
-		</div>
+		</button>
 	);
 };
 

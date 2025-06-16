@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 	return (
@@ -9,6 +9,7 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 				<div className="flex items-center space-x-2">
 					{showHistory && (
 						<button
+							type="button"
 							onClick={onClearHistory}
 							className="p-2 rounded-full hover:bg-rose-800/80 transition-colors text-rose-100 hover:text-white"
 							aria-label="Clear history"
@@ -20,6 +21,8 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 								strokeWidth={1.5}
 								stroke="currentColor"
 								className="size-6"
+								role="img"
+								aria-label="Clear history"
 							>
 								<path
 									strokeLinecap="round"
@@ -30,6 +33,7 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 						</button>
 					)}
 					<button
+						type="button"
 						onClick={onToggleHistory}
 						disabled={!hasHistory}
 						className={`p-2 rounded-full transition-colors ${
@@ -52,6 +56,14 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 							strokeWidth={1.5}
 							stroke="currentColor"
 							className="size-6"
+							role="img"
+							aria-label={
+								hasHistory
+									? showHistory
+										? "Hide history"
+										: "Show history"
+									: "No history available"
+							}
 						>
 							<path
 								strokeLinecap="round"

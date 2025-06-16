@@ -43,9 +43,9 @@ const Keypad = ({
 
 	return (
 		<div className="grid grid-cols-4 gap-2 items-center justify-items-center h-[300px] min-h-[210px]">
-			{keypadLayout.map((row, rowIndex) => (
-				<React.Fragment key={`row-${rowIndex}`}>
-					{row.map((button, colIndex) => (
+			{keypadLayout.map((row) => (
+				<React.Fragment key={`row-${row[0].id}`}>
+					{row.map((button) => (
 						<Button
 							key={button.id}
 							id={button.id}

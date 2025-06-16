@@ -18,6 +18,7 @@ const BackspaceIcon = () => (
 		strokeWidth={1.5}
 		stroke="currentColor"
 		className="size-6"
+		role="img"
 		aria-label="Backspace"
 	>
 		<path

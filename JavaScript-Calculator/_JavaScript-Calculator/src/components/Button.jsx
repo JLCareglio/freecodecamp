@@ -53,6 +53,7 @@ const Button = ({
 
 	const button = (
 		<button
+			type="button"
 			id={id}
 			className={buttonClasses}
 			onClick={handleClick}
