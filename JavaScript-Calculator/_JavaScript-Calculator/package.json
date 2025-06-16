@@ -2,7 +2,7 @@
 	"author": "Jesús Lautaro Careglio Albornoz",
 	"name": "javascript-calculator",
 	"private": true,
-	"version": "0.9.5",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
