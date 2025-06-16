@@ -16,16 +16,10 @@ const Display = ({
 			className={`bg-gray-700 rounded-lg shadow-inner overflow-hidden border border-gray-600 mb-2 ${className}`}
 		>
 			{/* First row: Expression */}
-			<Expression
-				value={expression}
-				className="text-gray-300 text-right px-4 pt-1"
-			/>
+			<Expression value={expression} />
 
 			{/* Second row: Result with = */}
-			<CurrentResult
-				result={currentResult}
-				className="text-blue-300 font-medium px-4 text-right"
-			/>
+			<CurrentResult result={currentResult} />
 
 			{/* Third row: Current input */}
 			<InputOutput

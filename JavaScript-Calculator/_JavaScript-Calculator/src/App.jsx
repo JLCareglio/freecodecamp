@@ -124,7 +124,7 @@ function App() {
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-start justify-center p-4 overflow-y-auto">
 			<div className="w-full max-w-[336px] flex flex-col min-h-[calc(100vh-2rem)] max-h-none">
-				<div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col border border-gray-700 h-full">
+				<div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col border border-gray-700 h-full max-h-[calc(100vh-2rem)]">
 					{/* Header */}
 					<Head
 						showHistory={showHistory}
@@ -136,38 +136,35 @@ function App() {
 					<div className="p-4 flex flex-col bg-gray-800 flex-1 min-h-0 overflow-y-auto">
 						{/* History Panel */}
 						{showHistory && (
-							<div className="flex-1 pb-2 max-h-[213px] overflow-y-auto">
-								<History
-									ref={historyContainerRef}
-									items={history}
-									onSelect={handleHistorySelect}
-									onClear={handleHistoryClear}
-									selectedId={selectedHistoryId}
-								/>
-							</div>
+							<History
+								ref={historyContainerRef}
+								items={history}
+								onSelect={handleHistorySelect}
+								onClear={handleHistoryClear}
+								selectedId={selectedHistoryId}
+							/>
 						)}
 
 						{/* Display */}
-						<Display
-							expression={expression}
-							currentValue={currentValue}
-							currentResult={currentResult}
-							lastInput={lastInput}
-						/>
-
-						{/* Keypad */}
-						<div className="w-full keypad-container">
-							<Keypad
-								onNumberClick={handleNumberClick}
-								onOperatorClick={handleOperatorClick}
-								onDecimalClick={handleDecimalClick}
-								onEqualsClick={handleEqualsClick}
-								onClearClick={handleClearClick}
-								onAllClearClick={handleAllClearClick}
-								onBackspaceClick={handleBackspaceClick}
-								className="w-full h-full"
+						<div className="flex-shrink-0">
+							<Display
+								expression={expression}
+								currentValue={currentValue}
+								currentResult={currentResult}
+								lastInput={lastInput}
 							/>
 						</div>
+
+						{/* Keypad */}
+						<Keypad
+							onNumberClick={handleNumberClick}
+							onOperatorClick={handleOperatorClick}
+							onDecimalClick={handleDecimalClick}
+							onEqualsClick={handleEqualsClick}
+							onClearClick={handleClearClick}
+							onAllClearClick={handleAllClearClick}
+							onBackspaceClick={handleBackspaceClick}
+						/>
 					</div>
 				</div>
 

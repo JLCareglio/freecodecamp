@@ -36,27 +36,23 @@ const History = React.forwardRef(
 
 		return (
 			<div
-				className={`bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 h-full ${className}`}
+				className="border border-gray-600 rounded-lg mb-2 min-h-[53px] max-h-[161px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
+				ref={setRefs}
+				onScroll={handleScroll}
 			>
-				<div
-					ref={setRefs}
-					className="divide-y divide-gray-700 h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
-					onScroll={handleScroll}
-				>
-					{items.length > 0 ? (
-						items.map((item) => (
-							<HistoryItem
-								key={item.id}
-								expression={item.expression}
-								result={item.result}
-								onClick={() => onSelect(item)}
-								isActive={selectedId === item.id}
-							/>
-						))
-					) : (
-						<div className="p-4 text-center text-gray-400">No history yet</div>
-					)}
-				</div>
+				{items.length > 0 ? (
+					items.map((item) => (
+						<HistoryItem
+							key={item.id}
+							expression={item.expression}
+							result={item.result}
+							onClick={() => onSelect(item)}
+							isActive={selectedId === item.id}
+						/>
+					))
+				) : (
+					<div className="p-4 text-center text-gray-400">No history yet</div>
+				)}
 			</div>
 		);
 	},

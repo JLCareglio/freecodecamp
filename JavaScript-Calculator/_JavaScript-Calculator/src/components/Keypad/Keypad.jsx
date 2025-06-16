@@ -42,25 +42,18 @@ const Keypad = ({
 	};
 
 	return (
-		<div className={`grid grid-cols-4 gap-2 w-full h-full ${className}`}>
+		<div className="grid grid-cols-4 gap-2 items-center justify-items-center h-[300px] min-h-[210px]">
 			{keypadLayout.map((row, rowIndex) => (
 				<React.Fragment key={`row-${rowIndex}`}>
 					{row.map((button, colIndex) => (
-						<div
+						<Button
 							key={button.id}
-							className={`
-                ${button.colSpan ? `col-span-${button.colSpan}` : ""}
-                ${button.rowSpan ? `row-span-${button.rowSpan}` : ""}
-              `}
-						>
-							<Button
-								id={button.id}
-								label={button.label}
-								type={button.type}
-								onClick={() => handleButtonClick(button)}
-								className="w-full h-full flex items-center justify-center text-xl"
-							/>
-						</div>
+							id={button.id}
+							label={button.label}
+							type={button.type}
+							onClick={() => handleButtonClick(button)}
+							className="w-full h-full flex items-center justify-center text-xl"
+						/>
 					))}
 				</React.Fragment>
 			))}
@@ -76,7 +69,6 @@ Keypad.propTypes = {
 	onClearClick: PropTypes.func.isRequired,
 	onAllClearClick: PropTypes.func.isRequired,
 	onBackspaceClick: PropTypes.func.isRequired,
-	className: PropTypes.string,
 };
 
 export default Keypad;

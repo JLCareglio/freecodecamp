@@ -7,7 +7,7 @@ const Expression = ({ value, className = "" }) => {
 
 	return (
 		<div
-			className={`text-right text-gray-300 text-medium font-mono overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 ${className}`}
+			className={`text-gray-300 text-right px-4 pt-1 text-medium font-mono overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 ${className}`}
 			aria-live="polite"
 		>
 			{displayValue}
