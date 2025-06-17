@@ -46,9 +46,7 @@ const Button = ({
 	].join(" ");
 
 	const handleClick = (e) => {
-		if (!disabled && onClick) {
-			onClick(e);
-		}
+		if (!disabled && onClick) onClick(e);
 	};
 
 	const button = (
@@ -64,9 +62,8 @@ const Button = ({
 		</button>
 	);
 
-	if (spanStyles.length > 0) {
+	if (spanStyles.length > 0)
 		return <div className={spanStyles.join(" ")}>{button}</div>;
-	}
 
 	return button;
 };

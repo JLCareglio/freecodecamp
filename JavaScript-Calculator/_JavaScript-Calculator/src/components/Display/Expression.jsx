@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const Expression = ({ value, className = "" }) => {
-	// Ensure value is a string and handle potential undefined/null
 	const displayValue = value || "";
 
 	return (

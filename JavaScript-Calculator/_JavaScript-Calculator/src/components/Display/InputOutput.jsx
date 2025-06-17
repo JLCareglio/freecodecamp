@@ -11,20 +11,15 @@ const InputOutput = ({
 	const getDisplayValue = () => {
 		if (!lastInput) return "0";
 
-		// If the last input was a number, show only the current number being entered
 		if (lastInput === "number") {
 			// Split by operators but keep them in the result to handle negative numbers
 			const parts = expression.split(/([+\-*/×÷%])/);
-			// Get the last part which should be the current number
 			return parts[parts.length - 1] || "0";
 		}
 
-		// If the last input was an operator, show the operator
 		if (lastInput === "operator") {
 			const lastChar = expression[expression.length - 1];
-			if (lastChar && /[+\-*/×÷%]/.test(lastChar)) {
-				return lastChar;
-			}
+			if (lastChar && /[+\-*/×÷%]/.test(lastChar)) return lastChar;
 			return "";
 		}
 

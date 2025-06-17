@@ -23,15 +23,11 @@ const calculatorSlice = createSlice({
 				return;
 			}
 
-			if (number === "." && state.currentValue.includes(".")) {
-				return;
-			}
+			if (number === "." && state.currentValue.includes(".")) return;
 
-			if (state.currentValue === "0" && number !== ".") {
+			if (state.currentValue === "0" && number !== ".")
 				state.currentValue = number;
-			} else {
-				state.currentValue += number;
-			}
+			else state.currentValue += number;
 
 			state.expression =
 				state.expression === "0" && number !== "."
@@ -57,10 +53,8 @@ const calculatorSlice = createSlice({
 
 			// Handle percentage as a regular operator
 			if (operator === "%") {
-				// Don't add percentage if the last input was an operator (except after a number)
-				if (state.lastInput === "operator" && !state.expression.endsWith("%")) {
+				if (state.lastInput === "operator" && !state.expression.endsWith("%"))
 					return;
-				}
 				// If last input was a number, add the percentage operator
 				if (state.lastInput === "number" && !state.resetOnNextInput) {
 					state.expression += "%";
@@ -92,15 +86,10 @@ const calculatorSlice = createSlice({
 					operators.includes(lastChar) ||
 					state.lastInput === "operator"
 				) {
-					// If the last input was a number, add multiplication before the parenthesis
-					if (state.lastInput === "number" && !state.resetOnNextInput) {
+					if (state.lastInput === "number" && !state.resetOnNextInput)
 						state.expression += "×(";
-					} else {
-						state.expression += "(";
-					}
-				} else {
-					state.expression += ")";
-				}
+					else state.expression += "(";
+				} else state.expression += ")";
 				state.currentValue = state.expression;
 				state.lastInput = "number";
 				state.resetOnNextInput = false;
@@ -109,27 +98,18 @@ const calculatorSlice = createSlice({
 
 			// Handle consecutive operators
 			if (state.lastInput === "operator") {
-				// If the last character is a minus and we're adding another operator
 				if (lastChar === "-" && operator !== "-") {
 					// If the character before the minus is also an operator, replace both
 					const secondLastChar =
 						state.expression.length > 1 ? state.expression.slice(-2, -1) : "";
-					if (operators.includes(secondLastChar)) {
+					if (operators.includes(secondLastChar))
 						state.expression = state.expression.slice(0, -2) + operator;
-					} else {
-						state.expression = state.expression.slice(0, -1) + operator;
-					}
-				} else if (operator !== "-") {
-					// Replace the last operator with the new one
+					else state.expression = state.expression.slice(0, -1) + operator;
+				} else if (operator !== "-")
 					state.expression = state.expression.slice(0, -1) + operator;
-				} else if (operator === "-" && !state.expression.endsWith("-")) {
-					// Allow adding a minus after another operator
+				else if (operator === "-" && !state.expression.endsWith("-"))
 					state.expression += operator;
-				}
-			} else {
-				// Add operator after a number or closing parenthesis
-				state.expression += operator;
-			}
+			} else state.expression += operator;
 
 			state.currentValue = operator;
 			state.lastInput = "operator";
@@ -138,9 +118,8 @@ const calculatorSlice = createSlice({
 		},
 
 		calculate: (state) => {
-			if (state.lastInput === "operator") {
+			if (state.lastInput === "operator")
 				state.expression = state.expression.slice(0, -1);
-			}
 
 			try {
 				// First, check for balanced parentheses
@@ -197,14 +176,8 @@ const calculatorSlice = createSlice({
 		},
 
 		backspace: (state) => {
-			if (state.resetOnNextInput) {
-				return; // Don't allow backspace right after calculation
-			}
-
-			// If there's nothing to delete
-			if (state.expression.length === 0) {
-				return;
-			}
+			if (state.resetOnNextInput) return;
+			if (state.expression.length === 0) return;
 
 			// Handle single character case or last character
 			if (state.expression.length === 1) {
@@ -215,10 +188,7 @@ const calculatorSlice = createSlice({
 				return;
 			}
 
-			// Remove the last character
 			state.expression = state.expression.slice(0, -1);
-
-			// Update current value based on the new expression
 			const lastChar = state.expression.slice(-1);
 
 			// If the last character is an operator, update lastInput and lastOperator

@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Head from "./components/Head/Head";
 import History from "./components/History/History";
 import Keypad from "./components/Keypad/Keypad";
-import { BUTTON_TYPES } from "./constants/keypadLayout.jsx";
 import useKeyboardInput from "./hooks/useKeyboardInput";
 import {
 	appendNumber,
@@ -17,7 +16,6 @@ import {
 	selectCurrentValue,
 	selectExpression,
 	selectLastInput,
-	selectLastResult,
 	setOperator,
 } from "./store/calculatorSlice";
 import {
@@ -32,7 +30,6 @@ function App() {
 	const expression = useSelector(selectExpression);
 	const currentValue = useSelector(selectCurrentValue);
 	const lastInput = useSelector(selectLastInput);
-	const lastResult = useSelector(selectLastResult);
 	const currentResult = useSelector(selectCurrentResult);
 	const history = useSelector(selectHistory);
 
@@ -41,37 +38,21 @@ function App() {
 	const [selectedHistoryId, setSelectedHistoryId] = useState(null);
 	const historyContainerRef = useRef(null);
 
-	// Enable keyboard input
-	useKeyboardInput();
+	useKeyboardInput(expression, currentResult);
 
 	// Auto-hide history when it's empty and not being toggled by the user
 	useEffect(() => {
-		// Only auto-hide if the history becomes empty while the panel is open
 		const timer = setTimeout(() => {
-			if (history.length === 0 && showHistory) {
-				setShowHistory(false);
-			}
+			if (history.length === 0 && showHistory) setShowHistory(false);
 		}, 0);
 
 		return () => clearTimeout(timer);
 	}, [history.length, showHistory]);
 
-	// Handle number button click
-	const handleNumberClick = (number) => {
-		dispatch(appendNumber(number));
-	};
+	const handleNumberClick = (number) => dispatch(appendNumber(number));
+	const handleOperatorClick = (operator) => dispatch(setOperator(operator));
+	const handleDecimalClick = () => dispatch(appendNumber("."));
 
-	// Handle operator button click
-	const handleOperatorClick = (operator) => {
-		dispatch(setOperator(operator));
-	};
-
-	// Handle decimal button click
-	const handleDecimalClick = () => {
-		dispatch(appendNumber("."));
-	};
-
-	// Handle equals button click
 	const handleEqualsClick = () => {
 		dispatch(calculate());
 		// Get the current expression before dispatching
@@ -88,38 +69,22 @@ function App() {
 		}, 0);
 	};
 
-	// Handle clear button click
-	const handleClearClick = () => {
-		dispatch(clear());
-	};
+	const handleClearClick = () => dispatch(clear());
+	const handleAllClearClick = () => dispatch(clear());
 
-	// Handle all clear button click
-	const handleAllClearClick = () => {
-		dispatch(clear());
-	};
-
-	// Handle backspace button click
-	const handleBackspaceClick = () => {
-		dispatch(backspace());
-	};
-
-	// Handle history item selection
+	const handleBackspaceClick = () => dispatch(backspace());
 	const handleHistorySelect = (item) => {
 		dispatch(loadFromHistory(item));
 		setSelectedHistoryId(item.id);
 		setShowHistory(false);
 	};
 
-	// Handle history clear
 	const handleHistoryClear = () => {
 		dispatch(clearHistory());
 		setSelectedHistoryId(null);
 	};
 
-	// Toggle history panel
-	const toggleHistory = () => {
-		setShowHistory(!showHistory);
-	};
+	const toggleHistory = () => setShowHistory(!showHistory);
 
 	return (
 		<div className="min-h-screen bg-gray-900 flex items-start justify-center p-4 overflow-y-auto">

@@ -7,32 +7,24 @@ const History = React.forwardRef(
 		const containerRef = useRef(null);
 		const wasScrolledToBottom = useRef(true);
 
-		// Combinar la referencia externa con la interna
 		const setRefs = (element) => {
-			// Guardar la referencia local
 			containerRef.current = element;
-
-			// Si hay una referencia externa, actualizarla también
-			if (typeof ref === "function") {
-				ref(element);
-			} else if (ref) {
-				ref.current = element;
-			}
+			if (typeof ref === "function") ref(element);
+			else if (ref) ref.current = element;
 		};
 
 		const prevItemsLengthRef = useRef(items.length);
 
-		// Efecto para manejar el scroll automático
+		// Auto-Scroll if new items are added
 		useEffect(() => {
 			if (containerRef.current) {
-				// Solo hacer scroll si se agregaron nuevos items
 				if (items.length > prevItemsLengthRef.current) {
 					const { scrollHeight } = containerRef.current;
 					containerRef.current.scrollTop = scrollHeight;
 				}
 				prevItemsLengthRef.current = items.length;
 			}
-		}, [items.length]); // Solo dependemos de items.length
+		}, [items.length]);
 
 		const handleScroll = (e) => {
 			const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -80,7 +72,6 @@ History.propTypes = {
 	className: PropTypes.string,
 };
 
-// Asegurarse de que el componente tenga un displayName para las herramientas de desarrollo
 History.displayName = "History";
 
 export default React.memo(History);

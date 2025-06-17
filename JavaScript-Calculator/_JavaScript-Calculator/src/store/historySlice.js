@@ -16,10 +16,7 @@ const historySlice = createSlice({
 				result,
 				timestamp: new Date().toISOString(),
 			});
-			// Mantener solo las últimas 10 operaciones
-			if (state.history.length > 10) {
-				state.history.shift(); // Eliminar el elemento más antiguo
-			}
+			if (state.history.length > 10) state.history.shift();
 		},
 		clearHistory: (state) => {
 			state.history = [];
