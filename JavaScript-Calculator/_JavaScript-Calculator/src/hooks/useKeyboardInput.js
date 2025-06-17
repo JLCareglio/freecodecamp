@@ -2,64 +2,87 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
 	appendNumber,
+	backspace,
 	calculate,
 	clear,
 	setOperator,
 } from "../store/calculatorSlice";
+import { addToHistory } from "../store/historySlice";
 
-const useKeyboardInput = () => {
+const useKeyboardInput = (expression, currentResult) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		const numberKeys = /^[0-9]$|^Numpad[0-9]$/;
+		const operatorMap = {
+			"+": "+",
+			NumpadAdd: "+",
+			"-": "-",
+			NumpadSubtract: "-",
+			"*": "×",
+			NumpadMultiply: "×",
+			"/": "÷",
+			NumpadDivide: "÷",
+			"%": "%",
+		};
+
 		const handleKeyDown = (e) => {
-			// Prevent default for all keys we handle
-			if (e.key.match(/[0-9+\-*/.=]|Enter|Escape|Backspace/)) {
+			if (
+				e.key.match(/[0-9+\-*/.=]|Enter|Escape|Backspace|Delete|%|,|Numpad/)
+			) {
 				e.preventDefault();
 			}
 
-			// Handle number keys (0-9)
-			if (e.key.match(/^[0-9]$/)) {
-				dispatch(appendNumber(e.key));
+			// Handle numbers
+			if (numberKeys.test(e.key)) {
+				const number = e.key.replace("Numpad", "");
+				dispatch(appendNumber(number));
+				return;
 			}
+
 			// Handle operators
-			else if (e.key === "+") {
-				dispatch(setOperator("+"));
-			} else if (e.key === "-") {
-				dispatch(setOperator("-"));
-			} else if (e.key === "*") {
-				dispatch(setOperator("×"));
-			} else if (e.key === "/") {
-				dispatch(setOperator("÷"));
+			if (operatorMap[e.key]) {
+				dispatch(setOperator(operatorMap[e.key]));
+				return;
 			}
-			// Handle decimal point
-			else if (e.key === ".") {
-				dispatch(appendNumber("."));
-			}
-			// Handle equals/enter
-			else if (e.key === "=" || e.key === "Enter") {
-				dispatch(calculate());
-			}
-			// Handle clear/escape
-			else if (e.key === "Escape" || e.key === "c" || e.key === "C") {
-				dispatch(clear());
-			}
-			// Handle backspace
-			else if (e.key === "Backspace") {
-				// You can implement backspace functionality here if needed
-				// For now, we'll just clear the last character
-				// This is a simplified implementation
-				// dispatch(backspace());
+
+			// Handle other cases
+			switch (e.key) {
+				case ".":
+				case ",":
+				case "NumpadDecimal":
+					dispatch(appendNumber("."));
+					break;
+				case "=":
+				case "Enter":
+				case "NumpadEnter":
+					dispatch(calculate());
+					setTimeout(() => {
+						dispatch(
+							addToHistory({
+								expression,
+								result: currentResult,
+							}),
+						);
+					}, 0);
+					break;
+				case "Escape":
+				case "c":
+				case "C":
+				case "Delete":
+					dispatch(clear());
+					break;
+				case "Backspace":
+					dispatch(backspace());
+					break;
+				default:
+					break;
 			}
 		};
 
-		// Add event listener
 		window.addEventListener("keydown", handleKeyDown);
-
-		// Clean up
-		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
-		};
-	}, [dispatch]);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [dispatch, expression, currentResult]);
 };
 
 export default useKeyboardInput;
