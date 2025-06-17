@@ -16,6 +16,8 @@ This repository contains all the projects I have created while completing the Fr
 
 - [Random-Quote-Machine](https://jlcareglio.github.io/freecodecamp/Random-Quote-Machine/index.html)
 - [Markdown Previewer](https://jlcareglio.github.io/freecodecamp/Markdown-Previewer/index.html)
+- Drum Machine
+- [JavaScript Calculator](https://jlcareglio.github.io/freecodecamp/JavaScript-Calculator/index.html)
 - [25 + 5 Clock](https://jlcareglio.github.io/freecodecamp/25Plus5-Clock/index.html)
 
 ## FreeCodeCamp Profile
