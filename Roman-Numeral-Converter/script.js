@@ -1,4 +1,4 @@
-// START freecodecamp exercises
+// START freeCodeCamp exercises
 
 function convertToRoman(num) {
   const romanNumerals = [
@@ -57,7 +57,7 @@ function convertNumber() {
   outputElement.classList.add("success");
 }
 
-// END freecodecamp exercises
+// END freeCodeCamp exercises
 
 let currentLanguage = "en";
 let currentTheme = localStorage.getItem("theme") || "dark";
@@ -86,6 +86,7 @@ function detectLanguage() {
 }
 
 function updateTexts() {
+  document.getElementById("language-selector").value = currentLanguage;
   document.title = translations[currentLanguage].title;
   document.getElementById("title").textContent =
     translations[currentLanguage].title;
@@ -94,7 +95,16 @@ function updateTexts() {
   document.getElementById("convert-btn").textContent =
     translations[currentLanguage].convertButton;
   document.getElementById("output").textContent = "";
-  document.getElementById("language-selector").value = currentLanguage;
+  document.getElementById("dev-by").textContent =
+    translations[currentLanguage].devBy;
+  document.getElementById("view-code").textContent =
+    translations[currentLanguage].viewCode;
+  document.getElementById("source-code").textContent =
+    translations[currentLanguage].sourceCode;
+  document.getElementById("and-also").textContent =
+    translations[currentLanguage].andAlso;
+  document.getElementById("my-other-projects").textContent =
+    translations[currentLanguage].myOtherProjects;
 }
 
 function changeLanguage(lang) {
@@ -128,6 +138,11 @@ const translations = {
     emptyInputError: "Please enter a valid number.",
     minNumberError: "Please enter a number greater than or equal to 1.",
     maxNumberError: "Please enter a number less than or equal to 3999.",
+    devBy: "Dev: Jesús Lautaro Careglio Albornoz",
+    viewCode: "View the",
+    sourceCode: "source code",
+    andAlso: "and also check out my other",
+    myOtherProjects: "freeCodeCamp projects",
   },
   es: {
     title: "Convertidor de Números Romanos",
@@ -136,6 +151,11 @@ const translations = {
     emptyInputError: "Por favor, ingrese un número válido.",
     minNumberError: "Por favor, ingrese un número mayor o igual a 1.",
     maxNumberError: "Por favor, ingrese un número menor o igual a 3999.",
+    devBy: "Desarrollado por: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Mira el",
+    sourceCode: "código fuente",
+    andAlso: "y también el resto de mis",
+    myOtherProjects: "proyectos de freeCodeCamp",
   },
   fr: {
     title: "Convertisseur de Nombres Romains",
@@ -144,6 +164,11 @@ const translations = {
     emptyInputError: "Veuillez entrer un nombre valide.",
     minNumberError: "Veuillez entrer un nombre supérieur ou égal à 1.",
     maxNumberError: "Veuillez entrer un nombre inférieur ou égal à 3999.",
+    devBy: "Développé par : Jesús Lautaro Careglio Albornoz",
+    viewCode: "Voir le",
+    sourceCode: "code source",
+    andAlso: "et découvrez aussi mes autres",
+    myOtherProjects: "projets freeCodeCamp",
   },
   de: {
     title: "Römische Zahlen Umrechner",
@@ -152,6 +177,11 @@ const translations = {
     emptyInputError: "Bitte geben Sie eine gültige Zahl ein.",
     minNumberError: "Bitte geben Sie eine Zahl größer oder gleich 1 ein.",
     maxNumberError: "Bitte geben Sie eine Zahl kleiner oder gleich 3999 ein.",
+    devBy: "Entwickelt von: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Siehe den",
+    sourceCode: "Quellcode",
+    andAlso: "und schau dir auch meine anderen",
+    myOtherProjects: "freeCodeCamp-Projekte an",
   },
   it: {
     title: "Convertitore di Numeri Romani",
@@ -160,6 +190,11 @@ const translations = {
     emptyInputError: "Per favore, inserisci un numero valido.",
     minNumberError: "Per favore, inserisci un numero maggiore o uguale a 1.",
     maxNumberError: "Per favore, inserisci un numero minore o uguale a 3999.",
+    devBy: "Sviluppato da: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Vedi il",
+    sourceCode: "codice sorgente",
+    andAlso: "e dai un'occhiata anche agli altri miei",
+    myOtherProjects: "progetti freeCodeCamp",
   },
   ja: {
     title: "ローマ数字変換器",
@@ -168,5 +203,10 @@ const translations = {
     emptyInputError: "有効な数字を入力してください。",
     minNumberError: "1以上の数字を入力してください。",
     maxNumberError: "3999以下の数字を入力してください。",
+    devBy: "開発者: Jesús Lautaro Careglio Albornoz",
+    viewCode: "ソースコードを",
+    sourceCode: "表示",
+    andAlso: "、他の",
+    myOtherProjects: "freeCodeCampプロジェクトもチェック",
   },
 };

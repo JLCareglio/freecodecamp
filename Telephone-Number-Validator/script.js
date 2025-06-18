@@ -1,4 +1,4 @@
-// START freecodecamp exercises
+// START freeCodeCamp exercises
 
 function checkNumber() {
   const number = document.getElementById("user-input").value;
@@ -37,7 +37,7 @@ function clearList() {
 const telephoneCheck = (str) =>
   /^(1\s?)?(\(\d{3}\)|\d{3})[\s-]?\d{3}[\s-]?\d{4}$/.test(str);
 
-// END freecodecamp exercises
+// END freeCodeCamp exercises
 
 let currentLanguage = "en";
 let currentTheme = localStorage.getItem("theme") || "dark";
@@ -66,6 +66,7 @@ function detectLanguage() {
 }
 
 function updateTexts() {
+  document.getElementById("language-selector").value = currentLanguage;
   document.title = translations[currentLanguage].title;
   document.getElementById("title").textContent =
     translations[currentLanguage].title;
@@ -75,7 +76,6 @@ function updateTexts() {
     translations[currentLanguage].checkButton;
   document.getElementById("clear-btn").textContent =
     translations[currentLanguage].clearButton;
-  document.getElementById("language-selector").value = currentLanguage;
 
   const resultList = document.getElementById("results-div");
   const numberItems = resultList.getElementsByClassName("number-item");
@@ -88,6 +88,17 @@ function updateTexts() {
       : translations[currentLanguage].notValidNumber.replace("${text}", number);
     item.textContent = message;
   });
+
+  document.getElementById("dev-by").textContent =
+    translations[currentLanguage].devBy;
+  document.getElementById("view-code").textContent =
+    translations[currentLanguage].viewCode;
+  document.getElementById("source-code").textContent =
+    translations[currentLanguage].sourceCode;
+  document.getElementById("and-also").textContent =
+    translations[currentLanguage].andAlso;
+  document.getElementById("my-other-projects").textContent =
+    translations[currentLanguage].myOtherProjects;
 }
 
 function changeLanguage(lang) {
@@ -122,6 +133,11 @@ const translations = {
     emptyInput: "Please provide a phone number",
     isValidNumber: "Valid US number: ${text}",
     notValidNumber: "Invalid US number: ${text}",
+    devBy: "Dev: Jesús Lautaro Careglio Albornoz",
+    viewCode: "View the",
+    sourceCode: "source code",
+    andAlso: "and also check out my other",
+    myOtherProjects: "freeCodeCamp projects",
   },
   es: {
     title: "Validador de Números Telefónicos",
@@ -131,6 +147,11 @@ const translations = {
     emptyInput: "Por favor ingrese un número telefónico",
     isValidNumber: "Número válido de EE.UU.: ${text}",
     notValidNumber: "Número inválido de EE.UU.: ${text}",
+    devBy: "Desarrollado por: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Mira el",
+    sourceCode: "código fuente",
+    andAlso: "y también el resto de mis",
+    myOtherProjects: "proyectos de freeCodeCamp",
   },
   fr: {
     title: "Validateur de Numéro de Téléphone",
@@ -140,6 +161,11 @@ const translations = {
     emptyInput: "Veuillez fournir un numéro de téléphone",
     isValidNumber: "Numéro US valide: ${text}",
     notValidNumber: "Numéro US invalide: ${text}",
+    devBy: "Développé par : Jesús Lautaro Careglio Albornoz",
+    viewCode: "Voir le",
+    sourceCode: "code source",
+    andAlso: "et découvrez aussi mes autres",
+    myOtherProjects: "projets freeCodeCamp",
   },
   de: {
     title: "Telefonnummer-Validator",
@@ -149,6 +175,11 @@ const translations = {
     emptyInput: "Bitte geben Sie eine Telefonnummer ein",
     isValidNumber: "Gültige US-Nummer: ${text}",
     notValidNumber: "Ungültige US-Nummer: ${text}",
+    devBy: "Entwickelt von: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Siehe den",
+    sourceCode: "Quellcode",
+    andAlso: "und schau dir auch meine anderen",
+    myOtherProjects: "freeCodeCamp-Projekte an",
   },
   it: {
     title: "Validatore Numero di Telefono",
@@ -158,6 +189,11 @@ const translations = {
     emptyInput: "Inserisci un numero di telefono",
     isValidNumber: "Numero US valido: ${text}",
     notValidNumber: "Numero US non valido: ${text}",
+    devBy: "Sviluppato da: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Vedi il",
+    sourceCode: "codice sorgente",
+    andAlso: "e dai un'occhiata anche agli altri miei",
+    myOtherProjects: "progetti freeCodeCamp",
   },
   ja: {
     title: "電話番号バリデーター",
@@ -167,5 +203,10 @@ const translations = {
     emptyInput: "電話番号を入力してください",
     isValidNumber: "有効な米国番号：${text}",
     notValidNumber: "無効な米国番号：${text}",
+    devBy: "開発者: Jesús Lautaro Careglio Albornoz",
+    viewCode: "ソースコードを",
+    sourceCode: "表示",
+    andAlso: "、他の",
+    myOtherProjects: "freeCodeCampプロジェクトもチェック",
   },
 };

@@ -1,4 +1,4 @@
-// START freecodecamp exercises
+// START freeCodeCamp exercises
 
 function checkPalindrome() {
   const textInput = document.getElementById("text-input");
@@ -37,7 +37,7 @@ function checkPalindrome() {
   }
 }
 
-// END freecodecamp exercises
+// END freeCodeCamp exercises
 
 function generatePalindrome() {
   const text = document.getElementById("text-input").value;
@@ -80,6 +80,7 @@ function detectLanguage() {
 }
 
 function updateTexts() {
+  document.getElementById("language-selector").value = currentLanguage;
   document.title = translations[currentLanguage].title;
   document.getElementById("title").textContent =
     translations[currentLanguage].title;
@@ -92,7 +93,16 @@ function updateTexts() {
   document.getElementById("info").textContent =
     translations[currentLanguage].info;
   document.getElementById("result").textContent = "...";
-  document.getElementById("language-selector").value = currentLanguage;
+  document.getElementById("dev-by").textContent =
+    translations[currentLanguage].devBy;
+  document.getElementById("view-code").textContent =
+    translations[currentLanguage].viewCode;
+  document.getElementById("source-code").textContent =
+    translations[currentLanguage].sourceCode;
+  document.getElementById("and-also").textContent =
+    translations[currentLanguage].andAlso;
+  document.getElementById("my-other-projects").textContent =
+    translations[currentLanguage].myOtherProjects;
 }
 
 function changeLanguage(lang) {
@@ -133,6 +143,11 @@ const translations = {
     isPalindrome: "${text} is a palindrome!",
     notPalindrome: "${text} is not a palindrome.",
     info: "💡 A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.",
+    devBy: "Dev: Jesús Lautaro Careglio Albornoz",
+    viewCode: "View the",
+    sourceCode: "source code",
+    andAlso: "and also check out my other",
+    myOtherProjects: "freeCodeCamp projects",
   },
   es: {
     title: "Verificador de Palíndromos",
@@ -143,6 +158,11 @@ const translations = {
     isPalindrome: "${text} es un palíndromo!",
     notPalindrome: "${text} no es un palíndromo.",
     info: "💡 Un palíndromo es una palabra o frase que se lee igual de izquierda a derecha que de derecha a izquierda, ignorando la puntuación, mayúsculas y espacios.",
+    devBy: "Desarrollado por: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Mira el",
+    sourceCode: "código fuente",
+    andAlso: "y también el resto de mis",
+    myOtherProjects: "proyectos de freeCodeCamp",
   },
   fr: {
     title: "Vérificateur de Palindrome",
@@ -153,6 +173,11 @@ const translations = {
     isPalindrome: "${text} est un palindrome !",
     notPalindrome: "${text} n'est pas un palindrome.",
     info: "💡 Un palindrome est une phrase ou un mot qui se lit de la même manière de gauche à droite que de droite à gauche, en ignorant la ponctuation, la casse et les espaces.",
+    devBy: "Développé par : Jesús Lautaro Careglio Albornoz",
+    viewCode: "Voir le",
+    sourceCode: "code source",
+    andAlso: "et découvrez aussi mes autres",
+    myOtherProjects: "projets freeCodeCamp",
   },
   de: {
     title: "Palindrom-Prüfer",
@@ -163,6 +188,11 @@ const translations = {
     isPalindrome: "${text} ist ein Palindrom!",
     notPalindrome: "${text} ist kein Palindrom.",
     info: "💡 Ein Palindrom ist eine Zeichenkette oder ein Wort, das von links nach rechts wie von rechts nach links gelesen wird, ohne die Satzzeichen, die Groß- und Kleinschreibung sowie die Leerzeichen zu berücksichtigen.",
+    devBy: "Entwickelt von: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Siehe den",
+    sourceCode: "Quellcode",
+    andAlso: "und schau dir auch meine anderen",
+    myOtherProjects: "freeCodeCamp-Projekte an",
   },
   it: {
     title: "Verificatore di Palindromi",
@@ -173,6 +203,11 @@ const translations = {
     isPalindrome: "${text} è un palindromo!",
     notPalindrome: "${text} non è un palindromo.",
     info: "💡 Un palindromo è una stringa o un parola che viene letta da sinistra a destra come da destra a sinistra, ignorando la punteggiatura, la maiuscola e lo spazio.",
+    devBy: "Sviluppato da: Jesús Lautaro Careglio Albornoz",
+    viewCode: "Vedi il",
+    sourceCode: "codice sorgente",
+    andAlso: "e dai un'occhiata anche agli altri miei",
+    myOtherProjects: "progetti freeCodeCamp",
   },
   ja: {
     title: "回文チェッカー",
@@ -183,5 +218,10 @@ const translations = {
     isPalindrome: "${text}は回文です！",
     notPalindrome: "${text}は回文ではありません。",
     info: "💡 回文は、左から右に読んでも右から左に読んでも同じになる単語や文です。",
+    devBy: "開発者: Jesús Lautaro Careglio Albornoz",
+    viewCode: "ソースコードを",
+    sourceCode: "表示",
+    andAlso: "、他の",
+    myOtherProjects: "freeCodeCampプロジェクトもチェック",
   },
 };
