@@ -1,58 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A cash register application that calculates change based on item price, customer payment and available cash in drawer"
+    />
+    <meta
+      name="keywords"
+      content="cash register, change calculator, money, payment, retail, javascript"
+    />
+    <meta name="author" content="Jesús Lautaro Careglio Albornoz" />
+    <meta name="robots" content="index, follow" />
+    <title>Cash Register</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="A cash register application that calculates change based on item price, customer payment and available cash in drawer" />
-  <meta name="keywords" content="cash register, change calculator, money, payment, retail, javascript" />
-  <meta name="author" content="Jesús Lautaro Careglio Albornoz" />
-  <meta name="robots" content="index, follow" />
-  <title>Cash Register</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-
-<body>
-  <nav>
-    <div class="nav-content">
-      <a href="https://jlcareglio.github.io/freecodecamp/">
-        <img src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp Logo"
-          class="logo" />
-      </a>
-      <button id="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌙</span>
-      </button>
-    </div>
-  </nav>
-  <main>
-    <h1>Cash Register</h1>
-    <div id="change-due"></div>
-    <div class="input-section">
-      <label>Enter cash from customer: <input type="number" id="cash" value="" step="0.01" /></label>
-      <button id="purchase-btn">Purchase</button>
-    </div>
-    <div class="machine">
-      <div class="price-display">
-        <h2>Item Price</h2>
-        <input type="number" id="current-price" class="price-input" step="0.01" value="1.87">
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="https://jlcareglio.github.io/freecodecamp/">
+          <img
+            src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+            alt="freeCodeCamp Logo"
+            class="logo"
+          />
+        </a>
+        <button id="theme-toggle" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span>
+        </button>
       </div>
-      <div class="cash-drawer">
-        <h2>Cash in Drawer</h2>
-        <div id="drawer-content"></div>
+    </nav>
+    <main>
+      <h1>Cash Register</h1>
+      <div id="change-due"></div>
+      <div class="input-section">
+        <label
+          >Enter cash from customer:
+          <input type="number" id="cash" value="" step="0.01"
+        /></label>
+        <button id="purchase-btn">Purchase</button>
       </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <p>Dev: Jesús Lautaro Careglio Albornoz</p>
-    <p>Mira el <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Cash-Register/" target="_blank"
-        rel="noopener noreferrer">codigo
-        fuente</a> y tambien el resto de <a href="https://jlcareglio.github.io/freecodecamp/" target="_blank"
-        rel="noopener noreferrer">mis
-        proyectos de freeCodeCamp</a></p>
-  </footer>
-  <script src="./script.js"></script>
-  <script src="./register3d.js"></script>
-</body>
-
+      <div class="machine">
+        <div class="price-display">
+          <h2>Item Price</h2>
+          <input
+            type="number"
+            id="current-price"
+            class="price-input"
+            step="0.01"
+            value="1.87"
+          />
+        </div>
+        <div class="cash-drawer">
+          <h2>Cash in Drawer</h2>
+          <div id="drawer-content"></div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>Dev: Jesús Lautaro Careglio Albornoz</p>
+      <p>
+        View the
+        <a
+          href="https://github.com/JLCareglio/freecodecamp/tree/main/Cash-Register/"
+          >source code</a
+        ><a
+          href="https://github.com/JLCareglio/freecodecamp/tree/main/Cash-Register/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="new-tab-link"
+          >↗</a
+        >
+        and also check out my other
+        <a href="https://jlcareglio.github.io/freecodecamp/"
+          >freeCodeCamp projects</a
+        ><a
+          href="https://jlcareglio.github.io/freecodecamp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="new-tab-link"
+          >↗</a
+        >
+      </p>
+    </footer>
+    <script src="./script.js"></script>
+    <script src="./register3d.js"></script>
+  </body>
 </html>

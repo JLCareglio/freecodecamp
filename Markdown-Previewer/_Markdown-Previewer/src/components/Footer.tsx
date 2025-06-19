@@ -12,21 +12,41 @@ const Footer: React.FC = () => {
       </p>
       <p className="text-gray-400 font-medium">
         {"👀 Mira el "}
-        <a
-          href="https://github.com/JLCareglio/freecodecamp/tree/main/Markdown-Previewer/_Markdown-Previewer"
-          className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
-          target="_blank"
-        >
-          codigo fuente
-        </a>
+        <>
+          <a
+            href="https://github.com/JLCareglio/freecodecamp/tree/main/Markdown-Previewer/_Markdown-Previewer"
+            className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
+          >
+            codigo fuente
+          </a>
+          <a
+            href="https://github.com/JLCareglio/freecodecamp/tree/main/Markdown-Previewer/_Markdown-Previewer"
+            className="inline-flex items-center justify-center w-5 h-5 font-bold no-underline leading-none p-[0.1em_0.2em_0.1em_0.15em] text-blue-400 hover:text-blue-300 transition-colors duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir en nueva pestaña"
+          >
+            ↗
+          </a>
+        </>
         {" y tambien el resto de "}
-        <a
-          href="https://jlcareglio.github.io/freecodecamp/"
-          className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
-          target="_blank"
-        >
-          mis proyectos de freeCodeCamp
-        </a>
+        <>
+          <a
+            href="https://jlcareglio.github.io/freecodecamp/"
+            className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
+          >
+            mis proyectos de freeCodeCamp
+          </a>
+          <a
+            href="https://jlcareglio.github.io/freecodecamp/"
+            className="inline-flex items-center justify-center w-5 h-5 font-bold no-underline leading-none p-[0.1em_0.2em_0.1em_0.15em] text-blue-400 hover:text-blue-300 transition-colors duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir en nueva pestaña"
+          >
+            ↗
+          </a>
+        </>
       </p>
     </footer>
   );

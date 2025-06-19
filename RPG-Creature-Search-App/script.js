@@ -54,10 +54,11 @@ const statRanges = {
 
 const creature404 = {
   id: 404,
-  name: "Unknown Creature",
+  name: "🍇 Unknown Creature 🍇",
   special: {
     name: "???",
-    description: "This mysterious creature's abilities remain unknown.",
+    description:
+      "This mysterious creature's abilities remain unknown. It is suspected that it may have a fondness for grapes 🍇.",
   },
   height: "???",
   weight: "???",

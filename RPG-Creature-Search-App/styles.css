@@ -518,6 +518,16 @@ tr:last-child .stat-meter {
   border-top: 2px solid var(--border-color);
 }
 
+.new-tab-link {
+  margin-left: 0;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid var(--primary-color);
+  border-radius: 1px;
+  line-height: 1;
+  padding: 0 0.2em 0.1em 0.15em;
+}
+
 /* Animaciones */
 @keyframes pulse {
   0% {

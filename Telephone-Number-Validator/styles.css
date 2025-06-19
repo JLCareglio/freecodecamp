@@ -206,6 +206,20 @@ button:disabled {
   margin-top: auto;
 }
 
+.new-tab-link {
+  display: inline-flex;
+  align-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-left: 0;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  border-radius: 3px;
+  line-height: 1;
+  padding: 0.1em 0.2em 0.1em 0.15em;
+}
+
 a, a:visited {
   color: var(--accent-color);
   max-height: 32px;

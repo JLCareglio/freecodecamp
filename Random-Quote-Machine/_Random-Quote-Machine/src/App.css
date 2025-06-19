@@ -203,3 +203,15 @@
   font-weight: 600;
   text-decoration: underline;
 }
+
+.footer a.new-tab-link {
+  display: inline-flex;
+  align-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-left: 0;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1;
+  padding: 0.1em 0.2em 0.1em 0.15em;
+}

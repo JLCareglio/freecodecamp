@@ -221,10 +221,56 @@ function App() {
         <div className="container p-0">
           <p className="dev-name">Dev: Jesús Lautaro Careglio Albornoz</p>
           <p>
-            Este proyecto fue construido con <span className="fw-semibold">React</span>, <span className="fw-semibold">JavaScript</span> y <span className="fw-semibold">Bootstrap</span> + OpenSheet-API.<br />
-            Entra <a href="https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/edit?gid=0#gid=0&range=A87" target="_blank" rel="noopener noreferrer" className="edit-link">aquí</a> para agregar/aporta tu cita informática. LEER <a href="./DISCLAIMER.html" target="_blank" rel="noopener noreferrer">DISCLAIMER</a>.</p>
+            Este proyecto fue construido con{" "}
+            <span className="fw-semibold">React</span>,{" "}
+            <span className="fw-semibold">JavaScript</span> y{" "}
+            <span className="fw-semibold">Bootstrap</span> + OpenSheet-API.
+            <br />
+            Entra{" "}
+            <a
+              href="https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/edit?gid=0#gid=0&range=A87"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="edit-link"
+            >
+              aquí
+            </a>{" "}
+            para agregar/aporta tu cita informática. LEER{" "}
+            <a
+              href="./DISCLAIMER.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DISCLAIMER
+            </a>
+            .
+          </p>
           <p className="mb-0">
-            Puedes ver el <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine" target="_blank" rel="noopener noreferrer">código fuente</a> y también ver el resto de mis <a href="https://jlcareglio.github.io/freecodecamp/" target="_blank" rel="noopener noreferrer">proyectos de freeCodeCamp</a>.
+            Puedes ver el{" "}
+            <a href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine">
+              código fuente
+            </a>
+            <a
+              href="https://github.com/JLCareglio/freecodecamp/tree/main/Random-Quote-Machine/_Random-Quote-Machine"
+              className="new-tab-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ↗
+            </a>{" "}
+            y también ver el resto de mis{" "}
+            <a href="https://jlcareglio.github.io/freecodecamp/">
+              proyectos de freeCodeCamp
+            </a>
+            <a
+              href="https://jlcareglio.github.io/freecodecamp/"
+              className="new-tab-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ↗
+            </a>
+            .
           </p>
         </div>
       </footer>
