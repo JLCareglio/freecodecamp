@@ -1,4 +1,8 @@
-// Neon futuristic orange theme
+// ============================================
+// 1. Variables y utilidades globales
+// ============================================
+
+// Variables de tema
 :root {
   --primary-orange: #ff6b00;
   --neon-orange: #ff8c00;
@@ -12,10 +16,12 @@
   --shadow-glow: rgba(255, 140, 0, 0.3);
 }
 
-// Animations
+// ============================================
+// 2. Animaciones globales
+// ============================================
+
 @keyframes neonGlow {
-  0%,
-  100% {
+  0%, 100% {
     box-shadow:
       0 0 20px var(--shadow-glow),
       0 0 40px var(--shadow-glow);
@@ -28,8 +34,7 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -50,7 +55,23 @@
   }
 }
 
-// Main container
+@keyframes sweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+// ============================================
+// 3. Componentes individuales
+// ============================================
+
+// ============================================
+// 3.1 PomodoroTimer (contenedor principal)
+// ============================================
+
 .pomodoro-timer {
   min-height: 100vh;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
@@ -70,6 +91,30 @@
     bottom: 0;
     background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
     pointer-events: none;
+  }
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--neon-orange);
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px var(--shadow-glow);
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-orange), transparent);
+    box-shadow: 0 0 10px var(--shadow-glow);
   }
 }
 
@@ -106,41 +151,59 @@
   }
 }
 
-// Title
-.app-title {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--neon-orange);
-  margin-bottom: 40px;
-  text-shadow: 0 0 20px var(--shadow-glow);
-  letter-spacing: 3px;
-  font-family: 'Courier New', monospace;
-  position: relative;
+// ============================================
+// 3.2 TimerDisplay (visualización del temporizador)
+// ============================================
 
-  &::after {
+.timer-display {
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid var(--neon-orange);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
     content: '';
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-orange), transparent);
-    box-shadow: 0 0 10px var(--shadow-glow);
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.2), transparent);
+    animation: sweep 3s infinite;
   }
 }
 
-// Controls section
+.timer-label {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--neon-orange);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.time-left {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 30px var(--shadow-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+// ============================================
+// 3.3 LengthControl (controles de duración)
+// ============================================
+
 .controls-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-bottom: 50px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
 }
 
 .length-control {
@@ -230,71 +293,15 @@
   }
 }
 
-// Timer display
-.timer-display {
-  background: rgba(0, 0, 0, 0.8);
-  border: 3px solid var(--neon-orange);
-  border-radius: 20px;
-  padding: 40px;
-  margin: 40px 0;
-  position: relative;
-  overflow: hidden;
+// ============================================
+// 3.4 TimerControls (botones de inicio/stop y reset)
+// ============================================
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.2), transparent);
-    animation: sweep 3s infinite;
-  }
-
-  @keyframes sweep {
-    0% {
-      left: -100%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
-}
-
-.timer-label {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--neon-orange);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Courier New', monospace;
-}
-
-.time-left {
-  font-size: 4rem;
-  font-weight: 900;
-  color: var(--text-primary);
-  font-family: 'Courier New', monospace;
-  text-shadow: 0 0 30px var(--shadow-glow);
-  animation: pulse 2s ease-in-out infinite;
-
-  @media (max-width: 768px) {
-    font-size: 3rem;
-  }
-}
-
-// Timer controls
 .timer-controls {
   display: flex;
   gap: 30px;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
-  }
 }
 
 .start-stop,
@@ -327,7 +334,47 @@
   }
 }
 
-// Responsive design
+// ============================================
+// 3.5 AudioNotification (notificación de audio)
+// ============================================
+
+// Estilos para el reproductor de audio oculto
+.audio-notification {
+  display: none;
+}
+
+// ============================================
+// 3.6 Footer
+// ============================================
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.new-tab-link {
+  display: inline-block;
+  margin-left: 2px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--neon-orange);
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--shadow-glow);
+    color: var(--bright-orange);
+  }
+}
+
+// ============================================
+// 4. Media Queries
+// ============================================
+
 @media (max-width: 768px) {
   .timer-container {
     padding: 30px 20px;
@@ -339,6 +386,8 @@
   }
 
   .controls-section {
+    grid-template-columns: 1fr;
+    gap: 30px;
     margin-bottom: 40px;
   }
 
@@ -358,6 +407,15 @@
 
   .timer-label {
     font-size: 1.4rem;
+  }
+
+  .time-left {
+    font-size: 3rem;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
