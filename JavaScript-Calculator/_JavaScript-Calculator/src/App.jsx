@@ -23,7 +23,6 @@ import {
 	clearHistory,
 	selectHistory,
 } from "./store/historySlice";
-import "./index.css";
 
 function App() {
 	// Get state from Redux
