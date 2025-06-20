@@ -1,0 +1,49 @@
+// ============================================
+// 2. Animaciones globales
+// ============================================
+
+@keyframes neonGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px var(--shadow-glow),
+      0 0 40px var(--shadow-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 30px var(--shadow-glow),
+      0 0 60px var(--shadow-glow);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

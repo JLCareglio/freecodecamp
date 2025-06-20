@@ -1,0 +1,27 @@
+// ============================================
+// 3.6 Footer
+// ============================================
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.new-tab-link {
+  display: inline-block;
+  margin-left: 2px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--neon-orange);
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--shadow-glow);
+    color: var(--bright-orange);
+  }
+}

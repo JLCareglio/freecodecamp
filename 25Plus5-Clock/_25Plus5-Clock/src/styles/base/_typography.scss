@@ -1,0 +1,23 @@
+.app-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--neon-orange);
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px var(--shadow-glow);
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-orange), transparent);
+    box-shadow: 0 0 10px var(--shadow-glow);
+  }
+}
