@@ -1,15 +1,30 @@
+// Abstracts
 @import 'abstracts/variables';
 @import 'abstracts/animations';
+
+// Base
 @import 'base/reset';
 @import 'base/base';
 @import 'base/typography';
-@import 'base/responsive';
+
+// Layout
 @import 'layout/container';
 @import 'layout/footer';
+
+// Components
 @import 'components/timer-display';
 @import 'components/length-control';
 @import 'components/timer-controls';
 @import 'components/audio-notification';
+
+// Pages
 @import 'pages/home';
+
+// Themes
 @import 'themes/default';
+
+// Utils
 @import 'utils/helpers';
+
+// Base -> Responsive (Overwrites the rest of styles)
+@import 'base/responsive';
