@@ -19,9 +19,15 @@ const Footer: React.FC = () => {
         >
           source code
         </a>
-        <span 
-          className="new-tab-link" 
-          onClick={() => window.open('https://github.com/JLCareglio/freecodecamp/tree/main/25Plus5-Clock/_25Plus5-Clock', '_blank', 'noopener,noreferrer')}
+        <span
+          className="new-tab-link"
+          onClick={() =>
+            window.open(
+              'https://github.com/JLCareglio/freecodecamp/tree/main/25Plus5-Clock/_25Plus5-Clock',
+              '_blank',
+              'noopener,noreferrer'
+            )
+          }
         >
           ↗
         </span>
@@ -32,9 +38,15 @@ const Footer: React.FC = () => {
         >
           my freeCodeCamp projects
         </a>
-        <span 
+        <span
           className="new-tab-link"
-          onClick={() => window.open('https://jlcareglio.github.io/freecodecamp/', '_blank', 'noopener,noreferrer')}
+          onClick={() =>
+            window.open(
+              'https://jlcareglio.github.io/freecodecamp/',
+              '_blank',
+              'noopener,noreferrer'
+            )
+          }
         >
           ↗
         </span>

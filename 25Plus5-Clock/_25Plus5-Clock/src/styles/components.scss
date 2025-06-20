@@ -21,7 +21,8 @@
 // ============================================
 
 @keyframes neonGlow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow:
       0 0 20px var(--shadow-glow),
       0 0 40px var(--shadow-glow);
@@ -34,7 +35,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
