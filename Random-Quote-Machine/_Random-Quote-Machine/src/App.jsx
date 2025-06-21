@@ -32,6 +32,9 @@ function App() {
   const [allQuotes, setAllQuotes] = useState([]);
   const [currentTheme, setCurrentTheme] = useState(0);
   const [isNewQuote, setIsNewQuote] = useState(false);
+  const [usedQuotes, setUsedQuotes] = useState([]);
+  const [remainingQuotes, setRemainingQuotes] = useState(0);
+  const [isUserQuote, setIsUserQuote] = useState(false);
   const quoteBoxRef = useRef(null);
   const rootRef = useRef(null);
 
@@ -57,9 +60,14 @@ function App() {
 
       if (storedQuotes && !shouldUpdate) {
         const parsedQuotes = JSON.parse(storedQuotes);
+        console.log("Citas cargadas desde localStorage:", parsedQuotes);
         setAllQuotes(parsedQuotes);
+        setRemainingQuotes(parsedQuotes.length);
         getRandomQuote(parsedQuotes);
-      } else await fetchAndStoreQuotes();
+      } else {
+        console.log("Buscando nuevas citas...");
+        await fetchAndStoreQuotes();
+      }
     } catch (error) {
       console.error("Error initializing quotes:", error);
       setQuote("An error occurred while loading quotes.");
@@ -74,12 +82,31 @@ function App() {
       const response = await fetch(ES_QUOTES_API);
       const quotes = await response.json();
 
+      const storedQuotes = localStorage.getItem(QUOTES_STORAGE_KEY);
+      const previousQuotes = storedQuotes ? JSON.parse(storedQuotes) : [];
+
+      const newQuotes = quotes.filter(
+        (newQuote) =>
+          !previousQuotes.some(
+            (oldQuote) =>
+              oldQuote.Citas === newQuote.Citas &&
+              oldQuote.Autores === newQuote.Autores
+          )
+      );
+
+      if (newQuotes.length > 0) {
+        console.log("¡Se encontraron nuevas citas!", newQuotes);
+      } else {
+        console.log("No se encontraron citas nuevas.");
+      }
+
       localStorage.setItem(QUOTES_STORAGE_KEY, JSON.stringify(quotes));
       localStorage.setItem(
         QUOTES_LAST_UPDATED_KEY,
         new Date().getTime().toString()
       );
 
+      console.log("Total de citas cargadas:", quotes);
       setAllQuotes(quotes);
       getRandomQuote(quotes);
     } catch (error) {
@@ -92,15 +119,38 @@ function App() {
     if (!quotes || quotes.length === 0) {
       setQuote("No quotes available.");
       setAuthor("System");
+      setRemainingQuotes(0);
       return;
     }
 
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    const randomQuote = quotes[randomIndex];
+    if (usedQuotes.length >= quotes.length) {
+      setUsedQuotes([]);
+      setRemainingQuotes(quotes.length);
+      return;
+    }
 
-    setQuote(randomQuote.Citas);
-    setAuthor(randomQuote.Autores);
+    const availableQuotes = quotes.filter(
+      (_, index) => !usedQuotes.includes(index)
+    );
+    const quotesToUse = availableQuotes.length > 0 ? availableQuotes : quotes;
+    const randomIndex = Math.floor(Math.random() * quotesToUse.length);
+    const selectedQuote = quotesToUse[randomIndex];
+    const originalIndex = quotes.findIndex(
+      (q) =>
+        q.Citas === selectedQuote.Citas && q.Autores === selectedQuote.Autores
+    );
 
+    const newUsedQuotes = [...usedQuotes, originalIndex];
+    setUsedQuotes(newUsedQuotes);
+
+    const remaining = quotes.length - newUsedQuotes.length;
+    setRemainingQuotes(remaining > 0 ? remaining : 0);
+
+    const isUserQuote = originalIndex >= 84;
+    setIsUserQuote(isUserQuote);
+
+    setQuote(selectedQuote.Citas);
+    setAuthor(selectedQuote.Autores);
     setIsNewQuote(true);
   };
 
@@ -114,6 +164,12 @@ function App() {
       rootRef.current.style.backgroundSize = "400% 400%";
       rootRef.current.style.animation = "gradientBG 15s ease infinite";
     }
+  };
+
+  const handleEditClick = (e) => {
+    localStorage.removeItem(QUOTES_STORAGE_KEY);
+    localStorage.removeItem(QUOTES_LAST_UPDATED_KEY);
+    setRemainingQuotes(0);
   };
 
   const handleNewQuote = () => {
@@ -151,15 +207,25 @@ function App() {
 
   return (
     <div className="container">
-      <header className="position-absolute top-0 start-50 translate-middle-x mt-3">
-        <a href="https://jlcareglio.github.io/freecodecamp/">
-          <img
-            src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
-            alt="freeCodeCamp Logo"
-            width="300"
-          />
-        </a>
-      </header>
+      <div className="d-flex justify-content-between align-items-start mb-4">
+        <header className="position-absolute top-0 start-50 translate-middle-x mt-3">
+          <a href="https://jlcareglio.github.io/freecodecamp/">
+            <img
+              src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+              alt="freeCodeCamp Logo"
+              width="300"
+            />
+          </a>
+        </header>
+        {!loading && allQuotes.length > 0 && (
+          <div className="quote-counter">
+            <span className="badge bg-secondary">
+              {remainingQuotes} {remainingQuotes === 1 ? "cita" : "citas"}{" "}
+              restante{remainingQuotes !== 1 ? "s" : ""}
+            </span>
+          </div>
+        )}
+      </div>
       <div
         id="quote-box"
         ref={quoteBoxRef}
@@ -176,7 +242,7 @@ function App() {
             <div id="text">
               <p>"{quote}"</p>
             </div>
-            <div id="author">
+            <div id="author" className={isUserQuote ? "user-quote" : ""}>
               <p>- {author}</p>
             </div>
             <div className="quote-actions">
@@ -214,6 +280,7 @@ function App() {
                   href="https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0/edit?gid=0#gid=0&range=A87"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleEditClick}
                   title="Agregar nueva cita"
                 >
                   <FaEdit />
@@ -241,10 +308,11 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="edit-link"
+              onClick={handleEditClick}
             >
               aquí
             </a>{" "}
-            para agregar/aporta tu cita informática. LEER{" "}
+            para agregar/aporta tu cita informática tras 24hs de espera. LEER{" "}
             <a
               href="./DISCLAIMER.html"
               target="_blank"
