@@ -6,6 +6,7 @@ import LengthControl from './LengthControl';
 import TimerDisplay from './TimerDisplay';
 import TimerControls from './TimerControls';
 import AudioNotification from './AudioNotification';
+import Header from './Header';
 import Footer from './Footer';
 import {
   incrementBreak,
@@ -43,33 +44,36 @@ const PomodoroTimer: React.FC = () => {
   }, [isRunning, timeLeft, dispatch]);
 
   return (
-    <div className="pomodoro-timer">
-      <div className="timer-container">
-        <h1 className="app-title">25 + 5 Clock</h1>
+    <>
+      <Header />
+      <div className="pomodoro-timer">
+        <div className="timer-container">
+          <h1 className="app-title">25 + 5 Clock</h1>
 
-        <div className="controls-section">
-          <LengthControl
-            id="break"
-            title="Break Length"
-            length={breakLength}
-            onIncrement={() => dispatch(incrementBreak())}
-            onDecrement={() => dispatch(decrementBreak())}
-          />
-          <LengthControl
-            id="session"
-            title="Session Length"
-            length={sessionLength}
-            onIncrement={() => dispatch(incrementSession())}
-            onDecrement={() => dispatch(decrementSession())}
-          />
+          <div className="controls-section">
+            <LengthControl
+              id="break"
+              title="Break Length"
+              length={breakLength}
+              onIncrement={() => dispatch(incrementBreak())}
+              onDecrement={() => dispatch(decrementBreak())}
+            />
+            <LengthControl
+              id="session"
+              title="Session Length"
+              length={sessionLength}
+              onIncrement={() => dispatch(incrementSession())}
+              onDecrement={() => dispatch(decrementSession())}
+            />
+          </div>
+
+          <TimerDisplay />
+          <TimerControls />
+          <AudioNotification />
+          <Footer />
         </div>
-
-        <TimerDisplay />
-        <TimerControls />
-        <AudioNotification />
-        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

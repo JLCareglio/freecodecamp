@@ -29,14 +29,14 @@ const Footer: React.FC = () => {
             )
           }
         >
-          ↗
+          <sup>{'\u2197\uFE0E'}</sup>
         </span>
-        {' and also the rest of '}
+        {' and also the rest of my '}
         <a
           href="https://jlcareglio.github.io/freecodecamp/"
           className="text-blue-400 underline hover:text-blue-300 transition-colors duration-300"
         >
-          my freeCodeCamp projects
+          freeCodeCamp projects
         </a>
         <span
           className="new-tab-link"
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             )
           }
         >
-          ↗
+          <sup>{'\u2197\uFE0E'}</sup>
         </span>
         .
       </p>

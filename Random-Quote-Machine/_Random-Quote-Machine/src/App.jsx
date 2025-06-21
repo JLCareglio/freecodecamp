@@ -151,6 +151,15 @@ function App() {
 
   return (
     <div className="container">
+      <header className="position-absolute top-0 start-50 translate-middle-x mt-3">
+        <a href="https://jlcareglio.github.io/freecodecamp/">
+          <img
+            src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+            alt="freeCodeCamp Logo"
+            width="300"
+          />
+        </a>
+      </header>
       <div
         id="quote-box"
         ref={quoteBoxRef}

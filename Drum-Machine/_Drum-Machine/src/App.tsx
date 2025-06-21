@@ -1,5 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import DrumPad from "./components/DrumPad";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
 	const [displayText, setDisplayText] = useState<string>(
@@ -125,27 +127,31 @@ function App() {
 	return (
 		<div
 			id="drum-machine"
-			className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-4 font-sans"
+			className="min-h-screen bg-slate-900 flex flex-col p-4 font-sans"
 		>
-			<output
-				id="display"
-				className="bg-slate-700 text-green-300 p-4 mb-8 rounded-lg shadow-xl min-w-[280px] min-h-[60px] text-center text-xl font-mono tracking-wider flex items-center justify-center"
-				aria-live="polite"
-			>
-				{displayText}
-			</output>
-			<div className="grid grid-cols-3 gap-4">
-				{orderedDrumPadData.map((pad) => (
-					<DrumPad
-						key={pad.id}
-						id={pad.id}
-						keyTrigger={pad.keyTrigger}
-						audioSrc={pad.audioSrc}
-						displayText={pad.displayText}
-						onClick={handlePadClick}
-					/>
-				))}
-			</div>
+			<Header />
+			<main className="flex-grow flex flex-col items-center justify-center">
+				<output
+					id="display"
+					className="bg-slate-700 text-green-300 p-4 mb-8 rounded-lg shadow-xl min-w-[280px] min-h-[60px] text-center text-xl font-mono tracking-wider flex items-center justify-center"
+					aria-live="polite"
+				>
+					{displayText}
+				</output>
+				<div className="grid grid-cols-3 gap-4">
+					{orderedDrumPadData.map((pad) => (
+						<DrumPad
+							key={pad.id}
+							id={pad.id}
+							keyTrigger={pad.keyTrigger}
+							audioSrc={pad.audioSrc}
+							displayText={pad.displayText}
+							onClick={handlePadClick}
+						/>
+					))}
+				</div>
+			</main>
+			<Footer />
 		</div>
 	);
 }
