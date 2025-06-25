@@ -90,8 +90,8 @@ function App() {
           !previousQuotes.some(
             (oldQuote) =>
               oldQuote.Citas === newQuote.Citas &&
-              oldQuote.Autores === newQuote.Autores
-          )
+              oldQuote.Autores === newQuote.Autores,
+          ),
       );
 
       if (newQuotes.length > 0) {
@@ -103,7 +103,7 @@ function App() {
       localStorage.setItem(QUOTES_STORAGE_KEY, JSON.stringify(quotes));
       localStorage.setItem(
         QUOTES_LAST_UPDATED_KEY,
-        new Date().getTime().toString()
+        new Date().getTime().toString(),
       );
 
       console.log("Total de citas cargadas:", quotes);
@@ -130,14 +130,14 @@ function App() {
     }
 
     const availableQuotes = quotes.filter(
-      (_, index) => !usedQuotes.includes(index)
+      (_, index) => !usedQuotes.includes(index),
     );
     const quotesToUse = availableQuotes.length > 0 ? availableQuotes : quotes;
     const randomIndex = Math.floor(Math.random() * quotesToUse.length);
     const selectedQuote = quotesToUse[randomIndex];
     const originalIndex = quotes.findIndex(
       (q) =>
-        q.Citas === selectedQuote.Citas && q.Autores === selectedQuote.Autores
+        q.Citas === selectedQuote.Citas && q.Autores === selectedQuote.Autores,
     );
 
     const newUsedQuotes = [...usedQuotes, originalIndex];
@@ -202,7 +202,7 @@ function App() {
 
   const facebookQuote = () =>
     `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(
-      shareText
+      shareText,
     )}`;
 
   return (
@@ -217,20 +217,20 @@ function App() {
             />
           </a>
         </header>
+      </div>
+      <div
+        id="quote-box"
+        ref={quoteBoxRef}
+        className={`position-relative ${isNewQuote ? "quote-transition" : ""}`}
+      >
         {!loading && allQuotes.length > 0 && (
-          <div className="quote-counter">
-            <span className="badge bg-secondary">
+          <div className="text-center mb-3">
+            <span className="badge">
               {remainingQuotes} {remainingQuotes === 1 ? "cita" : "citas"}{" "}
               restante{remainingQuotes !== 1 ? "s" : ""}
             </span>
           </div>
         )}
-      </div>
-      <div
-        id="quote-box"
-        ref={quoteBoxRef}
-        className={isNewQuote ? "quote-transition" : ""}
-      >
         {loading ? (
           <div className="text-center">
             <div className="spinner-border" role="status">
