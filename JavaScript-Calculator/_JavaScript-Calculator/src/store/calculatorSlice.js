@@ -171,7 +171,7 @@ const calculatorSlice = createSlice({
 			state.expression = expression;
 			state.currentValue = result.toString();
 			state.lastResult = { expression, result };
-			state.resetOnNextInput = true;
+			state.resetOnNextInput = false;
 			state.lastInput = "number";
 		},
 
