@@ -2,7 +2,7 @@
   "author": "Jesús Lautaro Careglio Albornoz",
   "name": "markdown-previewer",
   "private": true,
-  "version": "0.7.9",
+  "version": "0.7.10",
   "type": "module",
   "scripts": {
     "dev": "vite",

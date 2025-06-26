@@ -1,7 +1,13 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Máquina de Citas Aleatorias",
+  "short_name": "Máquina de Citas Aleatorias",
+  "description": "Máquina de Citas Aleatorias es una aplicación que permite a los usuarios ver citas informaticas aleatorias y también pueden agregar sus propias citas informaticas",
   "icons": [
+    {
+      "src": "./assets/images/favicon-original.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    },
     {
       "src": "./assets/images/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -13,7 +19,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#4F46E5",
-  "background_color": "#9333EA",
+  "theme_color": "#5B3BCB",
+  "background_color": "#FFD02F",
   "display": "standalone"
 }

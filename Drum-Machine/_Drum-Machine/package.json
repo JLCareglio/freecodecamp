@@ -2,7 +2,7 @@
   "author": "Jesús Lautaro Careglio Albornoz",
   "name": "drum-machine",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.5.8",
   "type": "module",
   "scripts": {
     "dev": "vite",

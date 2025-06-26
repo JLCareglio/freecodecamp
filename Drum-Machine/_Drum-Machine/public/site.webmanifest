@@ -1,7 +1,13 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Drum Machine",
+  "short_name": "Drum Machine",
+  "description": "The Drum Machine is a drum machine application that allows users to create and play drum patterns",
   "icons": [
+    {
+      "src": "./assets/images/favicon-original.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
     {
       "src": "./assets/images/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -14,6 +20,6 @@
     }
   ],
   "theme_color": "#397760",
-  "background_color": "#093d31",
+  "background_color": "#093D31",
   "display": "standalone"
 }

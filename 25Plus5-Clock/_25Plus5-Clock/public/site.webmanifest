@@ -1,7 +1,13 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "25+5 Clock",
+  "short_name": "25+5",
+  "description": "The 25+5 Clock is a Pomodoro-style timer application that alternates between 25-minute work sessions and 5-minute break sessions",
   "icons": [
+    {
+      "src": "./assets/images/favicon-original.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
     {
       "src": "./assets/images/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -13,7 +19,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ff6b00",
-  "background_color": "#ff6b00",
+  "theme_color": "#FF9933",
+  "background_color": "#0D0B05",
   "display": "standalone"
 }

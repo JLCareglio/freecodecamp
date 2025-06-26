@@ -1,7 +1,13 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Markdown Previewer",
+  "short_name": "Markdown Previewer",
+  "description": "The Markdown Previewer is a markdown previewer application that allows users to preview markdown content in real-time",
   "icons": [
+    {
+      "src": "./assets/images/favicon-original.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
     {
       "src": "./assets/images/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -14,6 +20,6 @@
     }
   ],
   "theme_color": "#4F46E5",
-  "background_color": "#9333EA",
+  "background_color": "#1B052E",
   "display": "standalone"
 }
