@@ -33,8 +33,8 @@ const historySlice = createSlice({
 		addToHistory: (state, action) => {
 			const { expression, result } = action.payload;
 
-			const operators = /[+\-×÷]/;
-			const endsWithOperator = /[+\-×÷]$/.test(expression);
+			const operators = /[+\-×÷%]/;
+			const endsWithOperator = /[+\-×÷%]$/.test(expression);
 			const hasOperator = operators.test(expression);
 			const isSingleNumber = /^[\d.]+$/.test(expression.trim());
 

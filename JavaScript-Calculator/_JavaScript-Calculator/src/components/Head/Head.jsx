@@ -3,7 +3,7 @@ import React from "react";
 
 const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 	return (
-		<div className="py-1 px-4 bg-gradient-to-r from-blue-800/90 to-blue-700/90 text-blue-100">
+		<div className="py-1 px-4 bg-slate-800 text-slate-100 border-b border-slate-700 shadow-lg">
 			<div className="flex justify-between items-center">
 				<h1 className="text-xl font-bold">JS-Calculator</h1>
 				<div className="flex items-center space-x-2">
@@ -11,7 +11,7 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 						<button
 							type="button"
 							onClick={onClearHistory}
-							className="p-2 rounded-full hover:bg-rose-800/80 transition-colors text-rose-100 hover:text-white"
+							className="p-2 rounded-full hover:bg-blue-800/80 transition-colors text-slate-200 hover:text-white hover:shadow-[0_0_8px_rgba(30,64,175,0.5)]"
 							aria-label="Clear history"
 						>
 							<svg
@@ -20,7 +20,7 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 								viewBox="0 0 24 24"
 								strokeWidth={1.5}
 								stroke="currentColor"
-								className="size-6"
+								className="size-6 drop-shadow-[0_0_4px_rgba(113,113,122,0.3)]"
 								role="img"
 								aria-label="Clear history"
 							>
@@ -38,8 +38,8 @@ const Head = ({ showHistory, hasHistory, onToggleHistory, onClearHistory }) => {
 						disabled={!hasHistory}
 						className={`p-2 rounded-full transition-colors ${
 							!hasHistory
-								? "text-gray-500 cursor-not-allowed"
-								: `text-emerald-100 ${showHistory ? "bg-emerald-700/80 hover:bg-emerald-600/80" : "hover:bg-emerald-700/50 hover:text-white"}`
+								? "text-slate-500 cursor-not-allowed"
+								: `text-slate-100 ${showHistory ? "bg-zinc-500 hover:bg-zinc-400" : "hover:bg-zinc-600/50 hover:text-white"}`
 						}`}
 						aria-label={
 							hasHistory

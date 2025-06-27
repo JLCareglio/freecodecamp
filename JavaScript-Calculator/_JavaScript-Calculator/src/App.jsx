@@ -59,12 +59,13 @@ function App() {
 
 		// Add to history after a small delay to ensure state is updated
 		setTimeout(() => {
-			dispatch(
+			const action = dispatch(
 				addToHistory({
 					expression: currentExpr,
 					result: currentResult,
 				}),
 			);
+			setSelectedHistoryId(action.payload.id);
 		}, 0);
 	};
 
@@ -75,7 +76,6 @@ function App() {
 	const handleHistorySelect = (item) => {
 		dispatch(loadFromHistory(item));
 		setSelectedHistoryId(item.id);
-		setShowHistory(false);
 	};
 
 	const handleHistoryClear = () => {

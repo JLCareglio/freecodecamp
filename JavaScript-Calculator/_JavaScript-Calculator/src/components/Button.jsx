@@ -16,21 +16,21 @@ const Button = ({
 
 	const typeStyles = {
 		number:
-			"bg-gray-700 hover:bg-gray-600 text-gray-100 active:bg-gray-500 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-slate-700 hover:bg-slate-600 text-slate-100 active:bg-slate-800 transition-all duration-150 ease-in-out transform active:scale-95 border border-slate-600/50",
 		operator:
-			"bg-amber-700 hover:bg-amber-600 text-white active:bg-amber-800 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-cyan-700 hover:bg-cyan-600 text-white font-medium active:bg-cyan-800 transition-all duration-150 ease-in-out transform active:scale-95 border border-cyan-600/50",
 		equals:
-			"bg-green-700 hover:bg-green-600 text-white active:bg-green-800 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-zinc-500 hover:bg-zinc-400 text-white font-medium active:bg-zinc-600 transition-all duration-150 ease-in-out transform active:scale-95 border border-zinc-400/50",
 		decimal:
-			"bg-gray-700 hover:bg-gray-600 text-gray-100 active:bg-gray-500 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-slate-700 hover:bg-slate-600 text-slate-100 active:bg-slate-800 transition-all duration-150 ease-in-out transform active:scale-95 border border-slate-600/50",
 		clear:
-			"bg-rose-900/80 hover:bg-rose-800/80 text-rose-100 active:bg-rose-900/90 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-blue-800 hover:bg-blue-700 text-white font-medium active:bg-blue-900 transition-all duration-150 ease-in-out transform active:scale-95 border border-blue-700/50",
 		allClear:
-			"bg-rose-900/80 hover:bg-rose-800/80 text-rose-100 active:bg-rose-900/90 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-blue-800 hover:bg-blue-700 text-white font-medium active:bg-blue-900 transition-all duration-150 ease-in-out transform active:scale-95 border border-blue-700/50",
 		backspace:
-			"bg-rose-900/80 hover:bg-rose-800/80 text-rose-100 active:bg-rose-900/90 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-blue-800 hover:bg-blue-700 text-white font-medium active:bg-blue-900 transition-all duration-150 ease-in-out transform active:scale-95 border border-blue-700/50",
 		default:
-			"bg-gray-800 hover:bg-gray-700 text-gray-200 active:bg-gray-600 transition-all duration-150 ease-in-out transform active:scale-95",
+			"bg-slate-800 hover:bg-slate-700 text-slate-200 active:bg-slate-900 transition-all duration-150 ease-in-out transform active:scale-95 border border-slate-700/50",
 	};
 
 	const spanStyles = [];
