@@ -49,8 +49,8 @@ const historySlice = createSlice({
 					},
 				];
 
-				// Keep only the last 10 items
-				const limitedHistory = newHistory.slice(-10);
+				// Keep only the last 50 items
+				const limitedHistory = newHistory.slice(-50);
 				state.history = limitedHistory;
 				saveHistoryToStorage(limitedHistory);
 			}
